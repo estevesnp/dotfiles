@@ -97,7 +97,10 @@ return {
 
 			local servers = {
 				clangd = {
-					cmd = { "clangd", "--offset-encoding=utf-16" },
+					cmd = {
+						"clangd",
+						"--offset-encoding=utf-16",
+					},
 				},
 
 				gopls = {},
