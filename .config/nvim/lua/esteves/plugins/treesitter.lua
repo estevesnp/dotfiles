@@ -2,7 +2,7 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
 	config = function()
-		local configs = require("nvim-treesitter.configs").setup({
+		require("nvim-treesitter.configs").setup({
 			ensure_installed = { "go", "rust", "java", "javascript", "typescript", "html", "lua" },
 			sync_install = false,
 			auto_install = true,

@@ -18,6 +18,9 @@ require("lazy").setup({
 	-- fatih/vim-go
 	require("esteves/plugins/vim-go"),
 
+	-- simrat39/rust-tools.nvim
+	require("esteves/plugins/rust-tools"),
+
 	-------
 	-- UTIL
 
