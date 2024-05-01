@@ -1,7 +1,7 @@
 #######
 # Paths
 
-export PATH=$PATH:
+export PATH=$PATH:~/go/bin
 
 
 #########
