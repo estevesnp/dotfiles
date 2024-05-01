@@ -15,12 +15,6 @@ require("lazy").setup({
 	-- stevearc/conform.nvim
 	require("esteves/plugins/conform"),
 
-	-- fatih/vim-go
-	require("esteves/plugins/vim-go"),
-
-	-- simrat39/rust-tools.nvim
-	require("esteves/plugins/rust-tools"),
-
 	-------
 	-- UTIL
 
@@ -45,9 +39,6 @@ require("lazy").setup({
 	-- windwp/nvim-autopairs
 	require("esteves/plugins/autopairs"),
 
-	-- akinsho/toggleterm.nvim
-	require("esteves/plugins/toggleterm"),
-
 	---------
 	-- VISUAL
 
@@ -56,7 +47,4 @@ require("lazy").setup({
 
 	-- nvim-lualine/lualine.nvim
 	require("esteves/plugins/lualine"),
-
-	-- folke/which-key.nvim
-	require("esteves/plugins/which-key"),
 })
