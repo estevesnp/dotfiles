@@ -21,6 +21,9 @@ require("lazy").setup({
 	-------
 	-- UTIL
 
+	-- christoomey/vim-tmux-navigator
+	require("esteves/plugins/tmux-navigator"),
+
 	-- nvim-telescope/telescope.nvim
 	require("esteves/plugins/telescope"),
 
