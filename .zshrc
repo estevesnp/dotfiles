@@ -1,7 +1,7 @@
 #######
 # Paths
 
-export PATH=$PATH:~/go/bin
+export PATH=$PATH:~/go/bin:~/.cargo/bin
 
 
 #########
