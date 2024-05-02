@@ -4,6 +4,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
 	},
+	build = ":GoInstallDeps",
 	config = function()
 		require("gopher").setup({})
 
