@@ -42,6 +42,9 @@ require("lazy").setup({
 	-- nvim-treesitter/nvim-treesitter-context
 	require("esteves/plugins/treesitter-context"),
 
+	-- tpope/vim-commentary
+	require("esteves/plugins/commentary"),
+
 	-- windwp/nvim-autopairs
 	require("esteves/plugins/autopairs"),
 
