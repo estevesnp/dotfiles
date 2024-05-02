@@ -15,6 +15,9 @@ require("lazy").setup({
 	-- stevearc/conform.nvim
 	require("esteves/plugins/conform"),
 
+	-- olexsmir/gopher.nvim
+	require("esteves/plugins/gopher"),
+
 	-------
 	-- UTIL
 
