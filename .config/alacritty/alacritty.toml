@@ -1,15 +1,35 @@
 # Theme
+
 import = ["~/.config/alacritty/themes/rose-pine.toml"]
 
 
 # Terminal color
+
 [env]
 TERM = "xterm-256color"
 
 
+# Mouse configuration
+
+[mouse]
+hide_when_typing = true
+
+
+# Window configuration
+
+[window.dimensions]
+columns = 120
+lines = 40
+
+[window.padding]
+x = 4
+y = 4
+
+
 # Font configuration
+
 [font]
-size = 11.0
+size = 12.0
 
 [font.normal]
 family = "CommitMono Nerd Font"
