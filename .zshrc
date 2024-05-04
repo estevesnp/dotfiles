@@ -10,6 +10,7 @@ export PATH=$PATH:~/scripts:~/go/bin:~/.cargo/bin
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias l='ls -lah --color=auto'
+alias vim='nvim'
 alias n='nvim .'
 alias cfgnvim='cd ~/.config/nvim/'
 
@@ -28,15 +29,36 @@ setopt incappendhistory  # Immediately append to the history file, not just when
 ##########
 # Plugins
 
-source ~/.zsh-pluggins/ls-colors/ls-colors.sh
-source ~/.zsh-pluggins/my-git-prompt/my-git-prompt.sh
-source ~/.zsh-pluggins/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_MANUAL_REBIND=""  # Reduces prompt lag from autosuggestions
 eval "$(fzf --zsh)" # FZF keybindings
+source ~/.zsh/ls-colors/ls-colors.sh
+source ~/.zsh/git-prompt/git-prompt.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_MANUAL_REBIND=""  # Reduces prompt lag from autosuggestions
 
 
 ########
 # Prompt
 
-PROMPT='%F{174}%m%f::%F{198}%2~%f $ '
+ZSH_GIT_PROMPT_SHOW_UPSTREAM="no"
+ZSH_GIT_PROMPT_SHOW_TRACKING_COUNTS=0
+ZSH_GIT_PROMPT_SHOW_LOCAL_COUNTS=0
 
+ZSH_THEME_GIT_PROMPT_PREFIX="["
+ZSH_THEME_GIT_PROMPT_SUFFIX="]"
+ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
+ZSH_THEME_GIT_PROMPT_DETACHED="%{$fg_bold[cyan]%}:"
+ZSH_THEME_GIT_PROMPT_BRANCH="%B%F{208}"
+ZSH_THEME_GIT_PROMPT_UPSTREAM_SYMBOL=""
+ZSH_THEME_GIT_PROMPT_UPSTREAM_NO_TRACKING=""
+ZSH_THEME_GIT_PROMPT_UPSTREAM_PREFIX=""
+ZSH_THEME_GIT_PROMPT_UPSTREAM_SUFFIX=""
+ZSH_THEME_GIT_PROMPT_BEHIND=""
+ZSH_THEME_GIT_PROMPT_AHEAD=""
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[red]%}✖"
+ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}●"
+ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg[red]%}✘"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[yellow]%}✚"
+ZSH_THEME_GIT_PROMPT_STASHED=""
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
+
+PROMPT='%F{174}%m%f::%F{198}%2~%f $(gitprompt)$ '
