@@ -18,8 +18,8 @@ hide_when_typing = true
 # Window configuration
 
 [window.dimensions]
-columns = 120
-lines = 40
+columns = 100
+lines = 30
 
 [window.padding]
 x = 4
