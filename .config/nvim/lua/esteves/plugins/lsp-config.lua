@@ -174,6 +174,7 @@ return {
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
 				"gopls",
+				--"gofumpt",
 				"goimports",
 				"rust_analyzer",
 				"tsserver",
