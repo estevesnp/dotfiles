@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Check if go is installed
+if ! command -v go &> /dev/null; then
+    echo "Go is not installed"
+    exit 1
+fi
+
+# Check if an argument is passed and store it as the project name
+# If no argument is passed, ask for the project name
+if [[ $# -eq 1 ]]; then
+    proj=$1
+else
+    echo -en "Enter the name of the project\n> "
+    read proj
+fi
+
+# Check if directory already exists
+if [[ -d $proj ]]; then
+    echo -e "Directory \"$proj\" already exists"
+    exit 1
+fi
+
+# Ask for username
+echo -en "Enter your github username\n> "
+read username
+
+# Create base project structure
+mkdir -p $proj/{cmd/$proj,bin,pkg,internal,tests}
+
+cd $proj
+
+go mod init github.com/$username/$proj &> /dev/null
+
+echo -e "package main\n\nfunc main() {\n}" > cmd/$proj/main.go
+
+echo -e "# $proj" > README.md
+
+echo -e "bin/\n.env" > .gitignore
+
+echo -e "build:\n\t@go build -o bin/$proj cmd/$proj/main.go" > Makefile
+echo -e "\nrun: build\n\t@bin/$proj" >> Makefile
