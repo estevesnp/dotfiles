@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Check if -h or --help is passed as an argument
+if [[ $1 == "-h" || $1 == "--help" ]]; then
+    echo -e "Usage: goskelly [project_name]\n"
+    echo "Creates a new Go project with a basic structure"
+    echo "If GITHUB_USER is set, it will ask to use it as the username"
+    exit 0
+fi
+
 # Check if go is installed
 if ! command -v go &> /dev/null; then
     echo "Go is not installed"
@@ -11,25 +19,39 @@ fi
 if [[ $# -eq 1 ]]; then
     proj=$1
 else
-    read -p "Enter the name of the project: " proj
+    while [[ -z $proj ]]; do
+        echo "Enter the project name"
+        read -p "> " proj
+        echo
+    done
 fi
 
 # Check if directory already exists
 if [[ -d $proj ]]; then
-    echo -e "Directory \"$proj\" already exists"
+    echo "Directory \"$proj\" already exists"
     exit 1
 fi
 
-# Check if GITHUB_USERNAME is set and ask if it should be used
+# Check if GITHUB_USER is set and ask if it should be used
 # If not, ask for the username
 if [[ -z $GITHUB_USER ]]; then
-    read -p "Enter your GitHub username: " username
+    while [[ -z $username ]]; do
+        echo "Enter your GitHub username"
+        read -p "> " username
+        echo
+    done
 else
-    read -p "Do you want to use the existing GITHUB_USER ($GITHUB_USER)? [y/n]: " choice
-    if [[ $choice == "y" || $choice == "Y" ]]; then
+    echo "Use \"$GITHUB_USER\" as the username? [y/n]"
+    read -p "> " choice
+    echo
+    if [[ $choice == "y" || $choice == "Y" || $choice == "" ]]; then
         username=$GITHUB_USER
     else
-        read -p "Enter your GitHub username: " username
+        while [[ -z $username ]]; do
+            echo "Enter your GitHub username"
+            read -p "> " username
+            echo
+        done
     fi
 fi
 
@@ -38,13 +60,16 @@ mkdir -p $proj/{cmd/$proj,bin,pkg,internal,tests}
 
 cd $proj
 
-go mod init github.com/$username/$proj &> /dev/null
+echo -e "Creating go.mod file\n"
+go mod init github.com/$username/$proj
 
 echo -e "package main\n\nfunc main() {\n}" > cmd/$proj/main.go
 
-echo -e "# $proj" > README.md
+echo -e "build:\n\t@go build -o bin/$proj cmd/$proj/main.go" > Makefile
+echo -e "\nrun: build\n\t@bin/$proj" >> Makefile
+
+echo "# $proj" > README.md
 
 echo -e "bin/\n.env" > .gitignore
 
-echo -e "build:\n\t@go build -o bin/$proj cmd/$proj/main.go" > Makefile
-echo -e "\nrun: build\n\t@bin/$proj" >> Makefile
+echo -e "\nProject successfully created"
