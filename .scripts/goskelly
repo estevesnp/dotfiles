@@ -22,10 +22,10 @@ fi
 
 # Check if GITHUB_USERNAME is set and ask if it should be used
 # If not, ask for the username
-if [[ -z $GITHUB_USERNAME ]]; then
+if [[ -z $GITHUB_USER ]]; then
     read -p "Enter your github username: " username
 else
-    read -p "Do you want to use the existing GITHUB_USERNAME ($GITHUB_USERNAME)? [y/n]: " choice
+    read -p "Do you want to use the existing GITHUB_USER ($GITHUB_USER)? [y/n]: " choice
     if [[ $choice == "y" || $choice == "Y" ]]; then
         username=$GITHUB_USERNAME
     else
