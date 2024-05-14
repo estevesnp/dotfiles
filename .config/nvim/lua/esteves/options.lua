@@ -26,6 +26,8 @@ vim.opt.timeoutlen = 300
 
 vim.opt.showmode = false
 
+-- Enable netrw relative line numbers
+vim.g.netrw_bufsettings = "noma nomod nu rnu nobl nowrap ro"
 vim.g.netrw_banner = 0
 
 vim.opt.swapfile = false
