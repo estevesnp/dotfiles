@@ -1,7 +1,10 @@
 #######
-# Paths
+# Exports 
 
 export PATH=$PATH:~/.scripts:~/go/bin:~/.cargo/bin
+export EDITOR=nvim
+export VISUAL="$EDITOR"
+export GITHUB_USER="estevesnp"
 
 
 #########
