@@ -15,7 +15,7 @@ alias grep='grep --color=auto'
 alias l='ls -lah --color=auto'
 alias vim='nvim'
 alias n='nvim .'
-alias cfgnvim='cd ~/.config/nvim/'
+alias cfgnvim='cd ~/.config/nvim/lua/esteves/'
 
 
 ################
