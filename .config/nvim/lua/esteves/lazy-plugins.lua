@@ -48,6 +48,9 @@ require("lazy").setup({
 	-- windwp/nvim-autopairs
 	require("esteves/plugins/autopairs"),
 
+	-- nvim-tree/nvim-tree.lua
+	require("esteves/plugins/nvim-tree"),
+
 	---------
 	-- VISUAL
 
@@ -56,4 +59,7 @@ require("lazy").setup({
 
 	-- nvim-lualine/lualine.nvim
 	require("esteves/plugins/lualine"),
+
+	-- prichrd/netrw.nvim
+	require("esteves/plugins/netrw"),
 })
