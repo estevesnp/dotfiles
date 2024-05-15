@@ -21,6 +21,12 @@ require("lazy").setup({
 	-- mfussenegger/nvim-jdtls
 	require("esteves/plugins/nvim-jdtls"),
 
+	-- mfussenegger/nvim-dap
+	require("esteves/plugins/dap"),
+
+	-- leoluz/nvim-dap-go
+	require("esteves/plugins/dap-go"),
+
 	-------
 	-- UTIL
 
