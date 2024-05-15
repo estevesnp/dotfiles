@@ -18,6 +18,9 @@ require("lazy").setup({
 	--crispgm/nvim-go
 	require("esteves/plugins/nvim-go"),
 
+	-- mfussenegger/nvim-jdtls
+	require("esteves/plugins/nvim-jdtls"),
+
 	-------
 	-- UTIL
 
