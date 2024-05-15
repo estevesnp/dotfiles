@@ -15,7 +15,7 @@ require("lazy").setup({
 	-- stevearc/conform.nvim
 	require("esteves/plugins/conform"),
 
-	--crispgm/nvim-go
+	-- crispgm/nvim-go
 	require("esteves/plugins/nvim-go"),
 
 	-- mfussenegger/nvim-jdtls
