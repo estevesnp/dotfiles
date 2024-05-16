@@ -56,7 +56,7 @@ else
 fi
 
 # Create base project structure
-mkdir -p $proj/{cmd/$proj,bin,pkg,internal,tests}
+mkdir -p $proj/{cmd/$proj,bin,pkg,internal}
 
 cd $proj
 
@@ -67,6 +67,7 @@ echo -e "package main\n\nfunc main() {\n}" > cmd/$proj/main.go
 
 echo -e "build:\n\t@go build -o bin/$proj cmd/$proj/main.go" > Makefile
 echo -e "\nrun: build\n\t@bin/$proj" >> Makefile
+echo -e "\ntest:\n\t@go test -v ./..." >> Makefile
 
 echo "# $proj" > README.md
 
