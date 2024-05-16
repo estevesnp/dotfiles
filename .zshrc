@@ -15,6 +15,7 @@ alias grep='grep --color=auto'
 alias l='ls -lah --color=auto'
 alias vim='nvim'
 alias n='nvim .'
+alias dot='cd ~/.dotfiles'
 alias cfgnvim='cd ~/.config/nvim/lua/esteves/'
 alias start-ssh='eval $(ssh-agent -s) && ssh-add'
 
@@ -33,7 +34,7 @@ setopt incappendhistory  # Immediately append to the history file, not just when
 ##########
 # Plugins
 
-eval "$(fzf --zsh)" # FZF keybindings
+source <(fzf --zsh) # fzf key bindings
 source ~/.zsh/ls-colors/ls-colors.sh
 source ~/.zsh/git-prompt/git-prompt.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
