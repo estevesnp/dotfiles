@@ -10,11 +10,15 @@ export GITHUB_USER="estevesnp"
 ##########
 # Bindings
 
-bindkey '^A' beginning-of-line # Ctrl + A
-bindkey '^E' end-of-line       # Ctrl + E
-bindkey '^U' kill-whole-line   # Ctrl + U
-bindkey '^[[3~' delete-char    # Delete
-bindkey '^[[3;5~' kill-line    # Ctrl + Delete
+bindkey '^A' beginning-of-line  # Ctrl + A
+bindkey '^E' end-of-line        # Ctrl + E
+bindkey '^U' kill-whole-line    # Ctrl + U
+bindkey '^W' backward-kill-word # Ctrl + W
+bindkey '^[d' kill-word         # Alt + D
+bindkey '^[[3~' delete-char     # Delete
+bindkey '^[[3;5~' kill-line     # Ctrl + Delete
+
+# Bind Ctrl-w to delete the word backward
 
 
 #########
