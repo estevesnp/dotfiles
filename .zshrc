@@ -7,20 +7,6 @@ export VISUAL="$EDITOR"
 export GITHUB_USER="estevesnp"
 
 
-##########
-# Bindings
-
-bindkey '^A' beginning-of-line  # Ctrl + A
-bindkey '^E' end-of-line        # Ctrl + E
-bindkey '^U' kill-whole-line    # Ctrl + U
-bindkey '^W' backward-kill-word # Ctrl + W
-bindkey '^[d' kill-word         # Alt + D
-bindkey '^[[3~' delete-char     # Delete
-bindkey '^[[3;5~' kill-line     # Ctrl + Delete
-
-# Bind Ctrl-w to delete the word backward
-
-
 #########
 # Aliases
 
@@ -35,15 +21,36 @@ alias start-ssh='eval $(ssh-agent -s) && ssh-add'
 alias tn='tmux new -s'
 
 
-################
-# History Config
+#########
+# History
 
-HISTSIZE=5000            # How many lines of history to keep in memory
-HISTFILE=~/.zsh_history  # Where to save history to disk
-SAVEHIST=5000            # Number of history entries to save to disk
-setopt appendhistory     # Append history to the history file (no overwriting)
-setopt sharehistory      # Share history across terminals
-setopt incappendhistory  # Immediately append to the history file, not just when a term is killed
+HISTSIZE=5000                # How many lines of history to keep in memory
+HISTFILE=~/.zsh_history      # Where to save history to disk
+SAVEHIST=5000                # Number of history entries to save to disk
+HISTDUP=erase                # Erase duplicates in the history file
+setopt appendhistory         # Append history to the history file (no overwriting)
+setopt sharehistory          # Share history across terminals
+setopt hist_ignore_space     # Ignore commands that start with a space
+setopt hist_ignore_all_dups  # Ignore duplication command history line
+setopt hist_save_no_dups     # Don't save duplicated commands
+setopt hist_ignore_dups      # Ignore duplicated commands
+setopt hist_find_no_dups     # Don't display duplicates when searching history
+setopt incappendhistory      # Immediately append to the history file, not just when a term is killed
+
+
+######
+# Misc
+
+bindkey -e                           # Use emacs key bindings
+bindkey '^p' history-search-backward # Search history back for current command
+bindkey '^n' history-search-forward  # Search history forward for current command
+setopt auto_cd                       # Change to directory without cd
+unsetopt nomatch                     # If a glob does not match, return the glob itself
+
+# Case-insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+autoload -Uz compinit && compinit
 
 
 ##########
