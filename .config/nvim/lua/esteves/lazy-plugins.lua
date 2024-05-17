@@ -60,6 +60,9 @@ require("lazy").setup({
 	-- nvim-tree/nvim-tree.lua
 	require("esteves/plugins/nvim-tree"),
 
+	-- stevearc/oil.nvim
+	require("esteves/plugins/oil"),
+
 	---------
 	-- VISUAL
 
