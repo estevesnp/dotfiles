@@ -18,6 +18,7 @@ alias n='nvim .'
 alias dot='cd ~/.dotfiles'
 alias cfgnvim='cd ~/.config/nvim/lua/esteves/'
 alias start-ssh='eval $(ssh-agent -s) && ssh-add'
+alias tn='tmux new -s'
 
 
 ################
