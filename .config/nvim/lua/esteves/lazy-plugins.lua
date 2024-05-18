@@ -42,26 +42,29 @@ require("lazy").setup({
 	-- jiaoshijie/undotree
 	require("esteves/plugins/undotree"),
 
-	-- tpope/vim-fugitive
-	require("esteves/plugins/fugitive"),
-
 	-- github/copilot.vim
 	require("esteves/plugins/copilot"),
 
 	-- nvim-treesitter/nvim-treesitter-context
 	require("esteves/plugins/treesitter-context"),
 
+	-- tpope/vim-fugitive
+	require("esteves/plugins/fugitive"),
+
 	-- tpope/vim-commentary
 	require("esteves/plugins/commentary"),
+
+	-- tpop/vim-surround
+	require("esteves/plugins/surround"),
 
 	-- windwp/nvim-autopairs
 	require("esteves/plugins/autopairs"),
 
-	-- nvim-tree/nvim-tree.lua
-	require("esteves/plugins/nvim-tree"),
-
 	-- stevearc/oil.nvim
 	require("esteves/plugins/oil"),
+
+	-- nvim-tree/nvim-tree.lua
+	require("esteves/plugins/nvim-tree"),
 
 	---------
 	-- VISUAL
