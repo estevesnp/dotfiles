@@ -121,6 +121,7 @@ return {
 				rust_analyzer = {},
 				tsserver = {},
 				angularls = {},
+				emmet_language_server = {},
 				clangd = {
 					cmd = {
 						"clangd",
@@ -161,6 +162,7 @@ return {
 				"rust_analyzer",
 				"tsserver",
 				"angularls",
+				"emmet_language_server",
 				"clangd",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
