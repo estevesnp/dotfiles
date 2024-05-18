@@ -122,6 +122,7 @@ return {
 				tsserver = {},
 				angularls = {},
 				emmet_language_server = {},
+				htmx = {},
 				clangd = {
 					cmd = {
 						"clangd",
@@ -163,6 +164,7 @@ return {
 				"tsserver",
 				"angularls",
 				"emmet_language_server",
+				"htmx",
 				"clangd",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
