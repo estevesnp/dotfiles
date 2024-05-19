@@ -4,6 +4,8 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
 	},
+	-- If there's an error installing quicktype, you can install it manually:
+	-- sudo npm install -g quicktype
 	build = ":GoInstallBinaries",
 	config = function()
 		require("go").setup({
