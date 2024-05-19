@@ -2,6 +2,14 @@
 
 These are my dotfiles. I manage them with `stow`.
 
+## Installation
+
+To clone the repo and it's submodules, run:
+
+```sh
+git clone --recursive git@github.com:estevesnp/dotfiles.git
+```
+
 ## Dependencies
 
 - `zsh`
