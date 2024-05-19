@@ -58,8 +58,8 @@ autoload -Uz compinit && compinit
 # Plugins
 
 source <(fzf --zsh) # fzf key bindings
-source ~/.zsh/ls-colors/ls-colors.sh
-source ~/.zsh/git-prompt/git-prompt.zsh
+source ~/.zsh/LS_COLORS/lscolors.sh
+source ~/.zsh/git-prompt.zsh/git-prompt.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_MANUAL_REBIND=""  # Reduces prompt lag from autosuggestions
 
