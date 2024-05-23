@@ -10,6 +10,12 @@ To clone the repo and it's submodules, run:
 git clone --recursive git@github.com:estevesnp/dotfiles.git
 ```
 
+If you forgot to clone with `--recursive`, you can run:
+
+```sh
+git submodule update --init --recursive
+```
+
 ## Dependencies
 
 - `zsh`
