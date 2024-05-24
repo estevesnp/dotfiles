@@ -45,6 +45,7 @@ setopt incappendhistory      # Immediately append to the history file, not just 
 # Misc
 
 bindkey -e                           # Use emacs key bindings
+bindkey "^[[3~" delete-char          # Delete key
 bindkey '^p' history-search-backward # Search history back for current command
 bindkey '^n' history-search-forward  # Search history forward for current command
 setopt auto_cd                       # Change to directory without cd
