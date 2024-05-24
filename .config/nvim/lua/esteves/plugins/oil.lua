@@ -10,6 +10,7 @@ return {
 				["<M-l>"] = "actions.refresh",
 				["<M-h>"] = "actions.select_split",
 				["<M-v>"] = "actions.select_vsplit",
+				["<C-s>"] = ":w<CR>",
 				["q"] = "actions.close",
 			},
 			view_options = {
