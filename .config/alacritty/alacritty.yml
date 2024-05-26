@@ -1,0 +1,34 @@
+# Theme
+import:
+  - ~/.config/alacritty/themes/rose-pine.yml
+
+# Terminal color
+env:
+  TERM: xterm-256color
+
+# Mouse configuration
+mouse:
+  hide_when_typing: true
+
+# Window configuration
+window:
+  dimensions:
+    columns: 100
+    lines: 30
+  padding:
+    x: 4
+    y: 4
+
+# Font configuration
+font:
+  size: 12
+  normal:
+    family: CommitMono Nerd Font
+    style: Regular
+  bold:
+    family: CommitMono Nerd Font
+    style: Bold
+  italic:
+    family: CommitMono Nerd Font
+    style: Italic
+
