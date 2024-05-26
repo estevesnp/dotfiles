@@ -1,4 +1,4 @@
-
+#########
 # Exports 
 
 export EDITOR=nvim
