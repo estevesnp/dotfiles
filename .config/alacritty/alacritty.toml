@@ -1,22 +1,15 @@
 # Theme
-
 import = ["~/.config/alacritty/themes/rose-pine.toml"]
 
-
 # Terminal color
-
 [env]
 TERM = "xterm-256color"
 
-
 # Mouse configuration
-
 [mouse]
 hide_when_typing = true
 
-
 # Window configuration
-
 [window.dimensions]
 columns = 100
 lines = 30
@@ -25,9 +18,7 @@ lines = 30
 x = 4
 y = 4
 
-
 # Font configuration
-
 [font]
 size = 12.0
 
@@ -42,4 +33,3 @@ style = "Bold"
 [font.italic]
 family = "CommitMono Nerd Font"
 style = "Italic"
-
