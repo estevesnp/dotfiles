@@ -125,12 +125,6 @@ return {
 				rust_analyzer = {},
 				tsserver = {},
 				emmet_language_server = {},
-				clangd = {
-					cmd = {
-						"clangd",
-						"--offset-encoding=utf-16",
-					},
-				},
 				-- See `:help lspconfig-all` for a list of all the pre-configured LSPs
 
 				lua_ls = {
@@ -165,7 +159,6 @@ return {
 				"rust_analyzer",
 				"tsserver",
 				"emmet_language_server",
-				"clangd",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
