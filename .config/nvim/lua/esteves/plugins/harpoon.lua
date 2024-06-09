@@ -5,19 +5,22 @@ return {
 	config = function()
 		local harpoon = require("harpoon")
 		harpoon:setup()
+		local map = CreateNamedMap("Harpoon")
 
-		vim.keymap.set("n", "<leader>a", function()
+		map("n", "<leader>a", function()
 			harpoon:list():add()
-		end, { desc = "Add to  H[A]rpoon" })
-		vim.keymap.set("n", "<C-e>", function()
-			harpoon.ui:toggle_quick_menu(harpoon:list())
-		end)
+		end, "Add to  H[A]rpoon")
 
-		vim.keymap.set("n", "<C-A-p>", function()
+		map("n", "<C-e>", function()
+			harpoon.ui:toggle_quick_menu(harpoon:list())
+		end, "Toggle [E]xplorer")
+
+		map("n", "<C-A-p>", function()
 			harpoon:list():prev()
-		end)
-		vim.keymap.set("n", "<C-A-n>", function()
+		end, "Navigate to [P]revious")
+
+		map("n", "<C-A-n>", function()
 			harpoon:list():next()
-		end)
+		end, "Navigate to [N]ext")
 	end,
 }
