@@ -15,13 +15,14 @@ return {
 	ft = "go",
 	config = function()
 		require("dap-go").setup()
+		local map = CreateNamedMap("DAP-Go")
 
-		vim.keymap.set("n", "<leader>bgt", function()
+		map("n", "<leader>bgt", function()
 			require("dap-go").debug_test()
-		end, { desc = "Debug Go test" })
+		end, "Debug Go test")
 
-		vim.keymap.set("n", "<leader>bgl", function()
+		map("n", "<leader>bgl", function()
 			require("dap-go").debug_last_test()
-		end, { desc = "Debug last Go test" })
+		end, "Debug last Go test")
 	end,
 }

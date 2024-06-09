@@ -17,7 +17,9 @@ return {
 				show_hidden = true,
 			},
 		})
-		vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-		vim.keymap.set("n", "<leader>-", require("oil").toggle_float, { desc = "Toggle oil float" })
+		local map = CreateNamedMap("Oil")
+
+		map("n", "-", "<CMD>Oil<CR>", "Open parent directory")
+		map("n", "<leader>-", require("oil").toggle_float, "Toggle oil float")
 	end,
 }

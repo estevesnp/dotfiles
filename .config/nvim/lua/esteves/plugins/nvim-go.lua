@@ -14,12 +14,13 @@ return {
 			auto_format = false,
 			auto_lint = false,
 		})
+		local map = CreateNamedMap("Go")
 
-		vim.keymap.set("n", "<leader>ife", "<cmd> GoIfErr<CR>", { desc = "Add if err check" })
-		vim.keymap.set("n", "<leader>gtj", "<cmd> GoAddTags json<CR>", { desc = "Add json struct tags" })
-		vim.keymap.set("n", "<leader>grj", "<cmd> GoRemoveTags json<CR>", { desc = "Remove json struct tags" })
-		vim.keymap.set("n", "<leader>gty", "<cmd> GoAddTags yaml<CR>", { desc = "Add yaml struct tags" })
-		vim.keymap.set("n", "<leader>gry", "<cmd> GoRemoveTags yaml<CR>", { desc = "Remove yaml struct tags" })
-		vim.keymap.set("n", "<leader>gtc", "<cmd> GoClearTags<CR>", { desc = "Clear struct tags" })
+		map("n", "<leader>ife", "<cmd> GoIfErr<CR>", "Add if err check")
+		map("n", "<leader>gtj", "<cmd> GoAddTags json<CR>", "Add json struct tags")
+		map("n", "<leader>grj", "<cmd> GoRemoveTags json<CR>", "Remove json struct tags")
+		map("n", "<leader>gty", "<cmd> GoAddTags yaml<CR>", "Add yaml struct tags")
+		map("n", "<leader>gry", "<cmd> GoRemoveTags yaml<CR>", "Remove yaml struct tags")
+		map("n", "<leader>gtc", "<cmd> GoClearTags<CR>", "Clear struct tags")
 	end,
 }

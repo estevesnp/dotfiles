@@ -4,28 +4,30 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
 		local builtin = require("telescope.builtin")
-		vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
-		vim.keymap.set("n", "<leader>gf", builtin.git_files, { desc = "Search [G]it [F]iles" })
-		vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch [G]rep" })
-		vim.keymap.set("n", "<leader>sm", builtin.marks, { desc = "[S]earch [M]arks" })
-		vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch [B]uffers" })
-		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-		vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
-		vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-		vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
-		vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+		local map = CreateNamedMap("Telescope")
 
-		vim.keymap.set("n", "<leader>/", function()
+		map("n", "<leader>sf", builtin.find_files, "[S]earch [F]iles")
+		map("n", "<leader>gf", builtin.git_files, "Search [G]it [F]iles")
+		map("n", "<leader>sg", builtin.live_grep, "[S]earch [G]rep")
+		map("n", "<leader>sm", builtin.marks, "[S]earch [M]arks")
+		map("n", "<leader>sb", builtin.buffers, "[S]earch [B]uffers")
+		map("n", "<leader>sk", builtin.keymaps, "[S]earch [K]eymaps")
+		map("n", "<leader>ss", builtin.builtin, "[S]earch [S]elect Telescope")
+		map("n", "<leader>sw", builtin.grep_string, "[S]earch current [W]ord")
+		map("n", "<leader>sd", builtin.diagnostics, "[S]earch [D]iagnostics")
+		map("n", "<leader>s.", builtin.oldfiles, '[S]earch Recent Files ("." for repeat)')
+
+		map("n", "<leader>/", function()
 			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 				winblend = 10,
 			}))
-		end, { desc = "[/] Fuzzily search in current buffer" })
+		end, "[/] Fuzzily search in current buffer")
 
-		vim.keymap.set("n", "<leader>sn", function()
+		map("n", "<leader>sn", function()
 			builtin.find_files({
 				cwd = vim.fn.stdpath("config"),
 				prompt_title = "Neovim Files",
 			})
-		end, { desc = "[S]earch [N]eovim files" })
+		end, "[S]earch [N]eovim files")
 	end,
 }
