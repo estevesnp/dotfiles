@@ -1,9 +1,11 @@
+-- Leader key
 vim.g.mapleader = " "
 
 -- Simple bindings
 vim.keymap.set("n", "<leader>rw", vim.cmd.Ex, { desc = "Open Net[R][W]" })
 vim.keymap.set("n", "<leader>rl", "<cmd>LspRestart<CR>", { desc = "[R]estart [L]SP" })
 
+-- Scroll down and up
 vim.keymap.set("n", "ç", "<C-e>")
 vim.keymap.set("n", "Ç", "<C-y>")
 
