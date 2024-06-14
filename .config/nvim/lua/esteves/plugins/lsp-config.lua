@@ -25,6 +25,7 @@ return {
 					map("n", "gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 					map("n", "gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 					map("n", "gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+					map("n", "gt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype [D]efinition")
 					map("n", "<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
 					map("n", "<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 					map("n", "<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
