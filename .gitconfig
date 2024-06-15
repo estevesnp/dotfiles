@@ -5,6 +5,8 @@
 [alias]
     staash = stash --all
 
+[pull]
+	rebase = true
 [rerere]
 	enabled = true
 [branch]
