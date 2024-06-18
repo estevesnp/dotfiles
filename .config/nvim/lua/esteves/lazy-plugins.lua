@@ -9,6 +9,9 @@ require("lazy").setup({
 	-- neovim/nvim-lspconfig
 	require("esteves/plugins/lsp-config"),
 
+	-- mfussenegger/nvim-lint
+	require("esteves/plugins/lint"),
+
 	-- hrsh7th/nvim-cmp
 	require("esteves/plugins/cmp"),
 
