@@ -7,7 +7,6 @@ return {
 			format_on_save = function(bufnr)
 				-- For FormatDisable and FormatEnable commands
 				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-					---@diagnostic disable-next-line: missing-return-value
 					return
 				end
 				-- Disable "format_on_save lsp_fallback" for languages that don't

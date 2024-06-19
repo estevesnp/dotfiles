@@ -1,7 +1,7 @@
 require("lazy").setup({
 
-	-------------------
-	-- LSP / FORMATTING
+	----------------------------
+	-- LSP / LINTER / FORMATTING
 
 	-- nvim-treesitter/nvim-treesitter
 	require("esteves/plugins/treesitter"),
@@ -27,9 +27,6 @@ require("lazy").setup({
 	-- mfussenegger/nvim-dap
 	require("esteves/plugins/dap"),
 
-	-- leoluz/nvim-dap-go
-	require("esteves/plugins/dap-go"),
-
 	-------
 	-- UTIL
 
@@ -51,8 +48,8 @@ require("lazy").setup({
 	-- nvim-treesitter/nvim-treesitter-context
 	require("esteves/plugins/treesitter-context"),
 
-	-- tpope/vim-fugitive
-	require("esteves/plugins/fugitive"),
+	-- lewis6991/gitsigns.nvim
+	require("esteves/plugins/gitsigns"),
 
 	-- tpope/vim-commentary
 	require("esteves/plugins/commentary"),
@@ -72,12 +69,12 @@ require("lazy").setup({
 	---------
 	-- VISUAL
 
-	-- rose-pine/neovim
-	require("esteves/plugins/rose-pine"),
-
 	-- nvim-lualine/lualine.nvim
 	require("esteves/plugins/lualine"),
 
-	-- prichrd/netrw.nvim
-	require("esteves/plugins/netrw"),
+	-- lukas-reineke/indent-blankline.nvim
+	require("esteves/plugins/indent"),
+
+	-- rose-pine/neovim
+	require("esteves/plugins/rose-pine"),
 })
