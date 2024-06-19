@@ -15,24 +15,19 @@ return {
 				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 				callback = function(event)
 					local map = CreateNamedMap("LSP")
+					local telescope = require("telescope.builtin")
 
-					map(
-						"n",
-						"<leader>ws",
-						require("telescope.builtin").lsp_dynamic_workspace_symbols,
-						"[W]orkspace [S]ymbols"
-					)
-					map("n", "gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-					map("n", "gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-					map("n", "gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-					map("n", "gt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype [D]efinition")
-					map("n", "<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-					map("n", "<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+					map("n", "K", vim.lsp.buf.hover, "Hover Documentation")
+					map("n", "gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 					map("n", "<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 					map("n", "<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-					map("n", "K", vim.lsp.buf.hover, "Hover Documentation")
 					map({ "i", "n" }, "<C-s>", vim.lsp.buf.signature_help, "[S]ignature Help")
-					map("n", "gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+					map("n", "gd", telescope.lsp_definitions, "[G]oto [D]efinition")
+					map("n", "gr", telescope.lsp_references, "[G]oto [R]eferences")
+					map("n", "gI", telescope.lsp_implementations, "[G]oto [I]mplementation")
+					map("n", "<leader>D", telescope.lsp_type_definitions, "Type [D]efinition")
+					map("n", "<leader>ds", telescope.lsp_document_symbols, "[D]ocument [S]ymbols")
+					map("n", "<leader>ws", telescope.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
 					-- The following two autocommands are used to highlight references of the
 					-- word under your cursor when your cursor rests there for a little while.
