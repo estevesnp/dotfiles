@@ -23,7 +23,9 @@ alias dotnv='cd ~/.config/nvim/lua/esteves/'
 alias tn='tmux new -s'
 alias ta='tmux attach -t'
 alias init-ssh='eval $(ssh-agent -s) && ssh-add'
-alias init-venv='python3 -m venv .venv'
+alias golint='golangci-lint run'
+alias venv-init='python3 -m venv .venv'
+alias venv-install='pip install -r requirements.txt'
 alias activate='source .venv/bin/activate'
 
 
