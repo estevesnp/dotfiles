@@ -43,15 +43,6 @@ vim.keymap.set("x", "<leader>p", '"_dP')
 vim.keymap.set("n", "<leader>d", '"_d')
 vim.keymap.set("v", "<leader>d", '"_d')
 
--- Highlight when yanking text
-vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-})
-
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>pd", vim.diagnostic.goto_prev, { desc = "Go to [P]revious [D]iagnostic message" })
 vim.keymap.set("n", "<leader>nd", vim.diagnostic.goto_next, { desc = "Go to [N]ext [D]iagnostic message" })
@@ -61,7 +52,7 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 -- Splits keymaps
 vim.keymap.set("n", "<C-w>h", "<cmd>split<CR>", { desc = "Split [H]orizontally" })
 vim.keymap.set("n", "<C-w>v", "<cmd>vsplit<CR>", { desc = "Split [V]ertically" })
-vim.keymap.set("n", "<C-Up>", "<cmd>resize +<CR>", { desc = "Increase height" })
-vim.keymap.set("n", "<C-Down>", "<cmd>resize -<CR>", { desc = "Decrease height" })
-vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize +5<CR>", { desc = "Increase width" })
-vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize -5<CR>", { desc = "Decrease width" })
+vim.keymap.set("n", "<C-Up>", "<cmd>resize +1<CR>", { desc = "Increase height" })
+vim.keymap.set("n", "<C-Down>", "<cmd>resize -1<CR>", { desc = "Decrease height" })
+vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -5<CR>", { desc = "Decrease width" })
+vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +5<CR>", { desc = "Increase width" })
