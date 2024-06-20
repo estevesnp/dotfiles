@@ -90,12 +90,12 @@ return {
 			},
 		})
 
-		map("n", "<leader>gdt", function()
+		map("n", "<leader>Gt", function()
 			dap_go.debug_test()
-		end, "[G]o [D]ebug [T]est")
+		end, "[G]o debug [T]est")
 
-		map("n", "<leader>gdl", function()
+		map("n", "<leader>Gl", function()
 			dap_go.debug_last_test()
-		end, "[G]o [D]ebug [L]ast test")
+		end, "[G]o debug [L]ast test")
 	end,
 }
