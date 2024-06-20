@@ -2,7 +2,8 @@ return {
 	"stevearc/oil.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		require("oil").setup({
+		local oil = require("oil")
+		oil.setup({
 			default_file_explorer = true,
 			skip_confirm_for_simple_edits = true,
 			view_options = {
@@ -22,9 +23,10 @@ return {
 				["q"] = "actions.close",
 			},
 		})
+
 		local map = CreateNamedMap("Oil")
 
-		map("n", "-", "<CMD>Oil<CR>", "Open parent directory")
-		map("n", "<leader>-", require("oil").toggle_float, "Toggle oil float")
+		map("n", "-", oil.open, "Open parent directory")
+		map("n", "<leader>-", oil.toggle_float, "Toggle oil float")
 	end,
 }

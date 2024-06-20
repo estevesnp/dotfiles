@@ -4,6 +4,7 @@ return {
 		require("nvim-tree").setup({
 			hijack_netrw = false,
 		})
-		vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "NvimTree: Toggle file tree" })
+		local map = CreateNamedMap("NvimTree")
+		map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", "Toggle file tree")
 	end,
 }
