@@ -31,7 +31,7 @@ return {
 		if vim.fn.executable("rust-analyzer") == 0 then
 			vim.notify(
 				"rust-analyzer not found in PATH, please install it.\nhttps://rust-analyzer.github.io/",
-				"error",
+				vim.log.levels.ERROR,
 				{ title = "rustaceanvim" }
 			)
 		end

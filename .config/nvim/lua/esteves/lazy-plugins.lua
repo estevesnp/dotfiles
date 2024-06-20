@@ -90,6 +90,9 @@ require("lazy").setup({
 	-- lukas-reineke/indent-blankline.nvim
 	require("esteves/plugins/indent"),
 
+	-- rcarriga/nvim-notify
+	require("esteves/plugins/notify"),
+
 	-- rose-pine/neovim
 	require("esteves/plugins/rose-pine"),
 })
