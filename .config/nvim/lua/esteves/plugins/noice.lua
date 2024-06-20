@@ -19,62 +19,49 @@ return {
 					vim.api.nvim_win_set_config(win, { zindex = 100 })
 				end,
 			},
+			init = function()
+				vim.notify = require("notify")
+			end,
 		},
 	},
-	opts = {},
-	config = function()
-		vim.notify = require("notify")
-		local noice = require("noice")
-
-		noice.setup({
-			lsp = {
-				override = {
-					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-					["vim.lsp.util.stylize_markdown"] = true,
-					["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-				},
+	opts = {
+		lsp = {
+			override = {
+				["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+				["vim.lsp.util.stylize_markdown"] = true,
+				["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
 			},
-			routes = {
-				{
-					filter = {
-						event = "msg_show",
-						any = {
-							{ find = "%d+L, %d+B" },
-							{ find = "; after #%d+" },
-							{ find = "; before #%d+" },
-						},
+		},
+		routes = {
+			{
+				filter = {
+					event = "msg_show",
+					any = {
+						{ find = "%d+L, %d+B" },
+						{ find = "; after #%d+" },
+						{ find = "; before #%d+" },
 					},
-					view = "mini",
 				},
+				view = "mini",
 			},
-			presets = {
-				bottom_search = true,
-				command_palette = true,
-				long_message_to_split = true,
-				lsp_doc_border = true,
-			},
-		})
-
-		local map = CreateNamedMap("Noice")
-
-		map("c", "<C-r>", function()
-			noice.redirect(vim.fn.getcmdline())
-		end, "Redirect command-line to Noice")
-
-		map("n", "<leader>nl", function()
-			noice.cmd("last")
-		end, "Open last notification")
-
-		map("n", "<leader>nh", function()
-			noice.cmd("history")
-		end, "Open notification history")
-
-		map("n", "<leader>nd", function()
-			noice.dismiss({ silent = true, pending = true })
-		end, "Dismiss all notifications")
-
-		map("n", "<leader>ns", function()
-			noice.cmd("pick")
-		end, "Open notifications in Telescope")
-	end,
+		},
+		presets = {
+			bottom_search = true,
+			command_palette = true,
+			long_message_to_split = true,
+			lsp_doc_border = true,
+		},
+	},
+  -- stylua: ignore
+  keys = {
+    { "<C-r>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Noice: Redirect Cmdline" },
+    { "<leader>nl", function() require("noice").cmd("last") end, desc = "Noice: Open last notification" },
+    { "<leader>nh", function() require("noice").cmd("history") end, desc = "Noice: Open notification history" },
+    { "<leader>ne", function() require("noice").cmd("errors") end, desc = "Noice: Open errors" },
+    { "<leader>na", function() require("noice").cmd("all") end, desc = "Noice: Open all" },
+    { "<leader>nf", function() require("noice").cmd("pick") end, desc = "Noice: Open in Telescope" },
+    { "<leader>nd", function() require("noice").cmd("dismiss") end, desc = "Noice: Dismiss All" },
+    { "<C-f>", function() if not require("noice.lsp").scroll(4) then return "<C-f>" end end, silent = true, expr = true, desc = "Noice: Scroll forward", mode = {"i", "n", "s"} },
+    { "<C-b>", function() if not require("noice.lsp").scroll(-4) then return "<C-b>" end end, silent = true, expr = true, desc = "Noice: Scroll backward", mode = {"i", "n", "s"}},
+  },
 }
