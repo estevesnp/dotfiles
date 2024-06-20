@@ -3,7 +3,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		opts = {
-			ensure_installed = { "go", "rust", "c", "java", "javascript", "typescript", "html", "lua" },
+			ensure_installed = { "go", "rust", "c", "java", "javascript", "typescript", "html", "lua", "vim", "vimdoc" },
 			auto_install = true,
 			highlight = {
 				enable = true,
