@@ -13,11 +13,11 @@ return {
 
 		local map = CreateNamedMap("Harpoon")
 
-		map("n", "<leader>h", function()
+		map("n", "<C-e>", function()
 			harpoon.ui:toggle_quick_menu(harpoon:list())
 		end, "Toggle Harpoon Menu")
 
-		map("n", "<leader>H", function()
+		map("n", "<leader>a", function()
 			harpoon:list():add()
 		end, "Add File to Harpoon")
 
