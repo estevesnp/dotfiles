@@ -65,7 +65,6 @@ return {
 				gopls = {
 					settings = {
 						gopls = {
-							gofumpt = true,
 							codelenses = {
 								gc_details = false,
 								generate = true,
@@ -117,6 +116,7 @@ return {
 			vim.list_extend(ensure_installed, {
 				"stylua",
 				"gopls",
+				"gofumpt",
 				"goimports",
 				"golangci-lint",
 				"jdtls",
