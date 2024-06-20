@@ -18,14 +18,20 @@ require("lazy").setup({
 	-- stevearc/conform.nvim
 	require("esteves/plugins/conform"),
 
+	-- mfussenegger/nvim-dap
+	require("esteves/plugins/dap"),
+
 	-- crispgm/nvim-go
 	require("esteves/plugins/nvim-go"),
 
+	-- mrcjkb/rustaceanvim
+	require("esteves/plugins/rustacean"),
+
+	-- saecki/crates.nvim
+	require("esteves/plugins/crates"),
+
 	-- mfussenegger/nvim-jdtls
 	require("esteves/plugins/nvim-jdtls"),
-
-	-- mfussenegger/nvim-dap
-	require("esteves/plugins/dap"),
 
 	-------
 	-- UTIL
@@ -38,6 +44,15 @@ require("lazy").setup({
 
 	-- ThePrimeagen/harpoon
 	require("esteves/plugins/harpoon"),
+
+	-- stevearc/oil.nvim
+	require("esteves/plugins/oil"),
+
+	-- refractalize/oil-git-status.nvim
+	require("esteves/plugins/oil-git-status"),
+
+	-- gbprod/yanky.nvim
+	require("esteves/plugins/yanky"),
 
 	-- jiaoshijie/undotree
 	require("esteves/plugins/undotree"),
@@ -60,8 +75,8 @@ require("lazy").setup({
 	-- windwp/nvim-autopairs
 	require("esteves/plugins/autopairs"),
 
-	-- stevearc/oil.nvim
-	require("esteves/plugins/oil"),
+	-- nvim-pack/nvim-spectre
+	require("esteves/plugins/spectre"),
 
 	-- nvim-tree/nvim-tree.lua
 	require("esteves/plugins/nvim-tree"),

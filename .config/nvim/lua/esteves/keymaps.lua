@@ -27,13 +27,16 @@ vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
+-- Open new line and stay in normal mode
+vim.keymap.set("n", "<leader>o", "o<ESC>")
+vim.keymap.set("n", "<leader>O", "O<ESC>")
+
 -- Leave selection in the middle of screen
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- Yank to system clipboard
-vim.keymap.set("n", "<leader>y", '"+y', { desc = "[y]ank to system clipboard" })
-vim.keymap.set("v", "<leader>y", '"+y', { desc = "[y]ank to system clipboard" })
+vim.keymap.set({ "n", "x" }, "<leader>y", '"+y', { desc = "[y]ank to system clipboard" })
 vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "[Y]ank to system clipboard" })
 
 -- Preserve paste register over selection

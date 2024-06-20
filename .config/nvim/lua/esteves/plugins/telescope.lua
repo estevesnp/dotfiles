@@ -3,6 +3,19 @@ return {
 	branch = "0.1.x",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
+		require("telescope").setup({
+			defaults = {
+				mappings = {
+					n = {
+						["<C-x>"] = require("telescope.actions").delete_buffer,
+					},
+					i = {
+						["<C-x>"] = require("telescope.actions").delete_buffer,
+					},
+				},
+			},
+		})
+
 		local builtin = require("telescope.builtin")
 		local map = CreateNamedMap("Telescope")
 
