@@ -20,6 +20,5 @@ return {
 		map("n", "<leader>nd", function()
 			require("notify").dismiss({ silent = true, pending = true })
 		end, "Dismiss All Notifications")
-		map("n", "<leader>ns", require("telescope").extensions.notify.notify, "Show Notifications")
 	end,
 }
