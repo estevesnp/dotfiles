@@ -12,8 +12,9 @@ export PATH=$PATH:~/.scripts:$GOPATH/bin:~/.cargo/bin
 # Aliases
 
 alias ls='ls --color=auto'
-alias grep='grep --color=auto'
 alias l='ls -lah --color=auto'
+alias ll='ls -lh --color=auto'
+alias grep='grep --color=auto'
 alias vim='nvim'
 alias n='nvim .'
 alias m='make'
@@ -90,7 +91,7 @@ ZSH_THEME_GIT_PROMPT_UPSTREAM_PREFIX=""
 ZSH_THEME_GIT_PROMPT_UPSTREAM_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_BEHIND="↓"
 ZSH_THEME_GIT_PROMPT_AHEAD="↑"
-ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[red]%}✖"
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[red]%}?"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}●"
 ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg[red]%}✘"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[yellow]%}✚"
