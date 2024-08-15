@@ -23,11 +23,18 @@ alias dot='cd ~/.dotfiles'
 alias dotnv='cd ~/.config/nvim/lua/esteves/'
 alias tn='tmux new -s'
 alias ta='tmux attach -t'
+alias bzf='fzf --preview="bat --color=always {}"'
 alias init-ssh='eval $(ssh-agent -s) && ssh-add'
 alias golint='golangci-lint run'
 alias venv-init='python3 -m venv .venv'
 alias venv-install='pip install -r requirements.txt'
 alias activate='source .venv/bin/activate'
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gp='git push'
+alias gpl='git pull'
 
 
 #########
