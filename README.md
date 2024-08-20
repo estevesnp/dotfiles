@@ -21,14 +21,14 @@ git submodule update --init --recursive
 - `zsh`
 - `stow`
 - `tmux`
+- `yazi`
 - `fzf`
-- `go`
-- `rust`
-- `java`
-- `gcc`
 - `neovim`
-    - `xclip` - for clipboard support
-    - `ripgrep` - for telescope
-    - `fd` - for telescope
-    - `nodejs` - for copilot
-    - `npm` - for ts-language-server
+  - `gcc` - for tree-sitter
+  - `xclip` - for clipboard support
+  - `ripgrep` - for telescope
+  - `fd` - for telescope
+  - `nodejs` - for copilot
+  - `npm` - for ts-language-server
+  - `go`
+  - `rust`
