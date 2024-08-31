@@ -1,34 +1,40 @@
-# Dotfiles
+# dotfiles
 
-These are my dotfiles. I manage them with `stow`.
+these are my dotfiles. i manage them with `stow`.
 
-## Installation
+## installation
 
-To clone the repo and it's submodules, run:
+to clone the repo and it's submodules, run:
 
 ```sh
 git clone --recursive git@github.com:estevesnp/dotfiles.git
 ```
 
-If you forgot to clone with `--recursive`, you can run:
+if you forgot to clone with `--recursive`, you can run:
 
 ```sh
 git submodule update --init --recursive
 ```
 
-## Dependencies
+## main apps
 
 - `zsh`
 - `stow`
-- `tmux`
-- `yazi`
+- `alacritty`
+- `nvim`
 - `fzf`
-- `neovim`
-  - `gcc` - for tree-sitter
-  - `xclip` - for clipboard support
-  - `ripgrep` - for telescope
-  - `fd` - for telescope
-  - `nodejs` - for copilot
-  - `npm` - for ts-language-server
-  - `go`
-  - `rust`
+- `tmux`
+- `tms`
+- `yazi`
+
+## dependencies
+
+### nvim
+
+- `gcc` (tree-sitter)
+- `xclip` (clipboard, check `:h clipboard`)
+- `fd` (telescope)
+- `ripgrep` (telescope)
+- `go` (gopls and tools)
+- `rust` (rust-analyzer and crates)
+- `npm` (ts-server and quicktype)
