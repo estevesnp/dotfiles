@@ -18,23 +18,24 @@ git submodule update --init --recursive
 
 ## main apps
 
-- `zsh`
-- `stow`
-- `alacritty`
-- `nvim`
-- `fzf`
-- `tmux`
-- `tms`
-- `yazi`
+- zsh
+- stow
+- alacritty
+- nvim
+- fzf
+- tmux
+- tms    `cargo install --locked tmux-sessionizer`
+- zoxide `cargo install --locked zoxide`
+- yazi   `cargo install --locked yazi-fm yazi-cli`
 
 ## dependencies
 
 ### nvim
 
-- `gcc` (tree-sitter)
-- `xclip` (clipboard, check `:h clipboard`)
-- `fd` (telescope)
-- `ripgrep` (telescope)
-- `go` (gopls and tools)
-- `rust` (rust-analyzer and crates)
-- `npm` (ts-server and quicktype)
+- gcc (tree-sitter)
+- xclip (clipboard, check `:h clipboard`)
+- fd (telescope)
+- ripgrep (telescope)
+- go (gopls and tools)
+- rust (rust-analyzer and crates)
+- npm (ts-server and quicktype)

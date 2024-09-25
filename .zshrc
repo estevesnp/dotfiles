@@ -73,13 +73,22 @@ autoload -Uz compinit && compinit
 ##########
 # Plugins
 
-source <(fzf --zsh) # fzf key bindings
 source ~/.zsh/LS_COLORS/lscolors.sh
 source ~/.zsh/git-prompt.zsh/git-prompt.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_MANUAL_REBIND=""  # Reduces prompt lag from autosuggestions
 
-# Yazi
+# zoxide
+if hash zoxide 2> /dev/null; then
+    eval "$(zoxide init zsh --cmd cd)"
+fi
+
+# fzf
+if hash fzf 2> /dev/null; then
+    source <(fzf --zsh)
+fi
+
+# yazi
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
