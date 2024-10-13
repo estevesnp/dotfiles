@@ -64,6 +64,10 @@ bindkey '^n' history-search-forward  # Search history forward for current comman
 setopt auto_cd                       # Change to directory without cd
 unsetopt nomatch                     # If a glob does not match, return the glob itself
 
+# See last dirs with `dirs -v`
+setopt AUTO_PUSHD
+export DIRSTACKSIZE=20
+
 # Case-insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
