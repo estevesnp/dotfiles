@@ -1,4 +1,5 @@
 # Theme
+[general]
 import = ["~/.config/alacritty/themes/rose-pine.toml"]
 
 # Terminal color
