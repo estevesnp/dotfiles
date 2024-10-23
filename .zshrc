@@ -8,27 +8,30 @@ export GOPATH=~/.go
 export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.cargo/bin
 
 
-#########
-# Aliases
+#######################
+# Aliases and Functions
 
+# general
 alias ls='ls --color=auto'
-alias l='ls -lah --color=auto'
 alias ll='ls -lh --color=auto'
+alias l='ls -lah --color=auto'
 alias grep='grep --color=auto'
+alias c='clear'
+alias m='make'
+
+# neovim
 alias vim='nvim'
 alias n='nvim .'
-alias m='make'
-alias c='clear'
-alias dot='cd ~/.dotfiles'
-alias dotnv='cd ~/.config/nvim/lua/esteves/'
+fn() {
+  local file=$(fzf --preview="bat --color=always {}")
+  [[ -n "$file" ]] && nvim "$file"
+}
+
+# tmux
 alias tn='tmux new -s'
 alias ta='tmux attach -t'
-alias bzf='fzf --preview="bat --color=always {}"'
-alias init-ssh='eval $(ssh-agent -s) && ssh-add'
-alias golint='golangci-lint run'
-alias venv-init='python3 -m venv .venv'
-alias venv-install='pip install -r requirements.txt'
-alias activate='source .venv/bin/activate'
+
+# git
 alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
@@ -36,6 +39,15 @@ alias gcm='git commit -m'
 alias gp='git push'
 alias gpl='git pull'
 
+# python
+alias venv-init='python3 -m venv .venv'
+alias venv-install='pip install -r requirements.txt'
+alias activate='source .venv/bin/activate'
+
+# misc
+alias init-ssh='eval $(ssh-agent -s) && ssh-add'
+alias golint='golangci-lint run'
+alias bzf='fzf --preview="bat --color=always {}"'
 
 #########
 # History
@@ -74,7 +86,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 autoload -Uz compinit && compinit
 
 
-##########
+#########
 # Plugins
 
 source ~/.zsh/LS_COLORS/lscolors.sh
