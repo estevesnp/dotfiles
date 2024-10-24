@@ -6,6 +6,7 @@ export VISUAL="$EDITOR"
 export GITHUB_USER="estevesnp"
 export GOPATH=~/.go
 export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.cargo/bin
+export BAT_THEME="rose-pine"
 
 
 #######################
