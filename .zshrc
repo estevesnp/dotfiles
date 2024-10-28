@@ -35,10 +35,27 @@ alias ta='tmux attach -t'
 # git
 alias gs='git status'
 alias ga='git add'
+alias gaa='git add -A'
 alias gc='git commit'
 alias gcm='git commit -m'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gr='git restore'
+alias grs='git restore --staged'
 alias gp='git push'
+alias gpf='git push --force-with-lease'
 alias gpl='git pull'
+alias cdr='cd $(git rev-parse --show-toplevel)' # cd to git Root
+alias co='git checkout' # [c]heck [o]ut
+fo() {                  # [f]uzzy check[o]ut
+  git branch --no-color --sort=-committerdate --format='%(refname:short)' | fzf --header 'git checkout' | xargs git checkout
+}
+po() {                  # [p]ull request check[o]ut
+  gh pr list | fzf --header 'checkout PR' | awk '{print $(NF-5)}' | xargs git checkout
+}
+mpo() {                  # [m]y [p]ull request check[o]ut
+  gh pr list --author "@me" | fzf --header 'checkout PR' | awk '{print $(NF-5)}' | xargs git checkout
+}
 
 # python
 alias venv-init='python3 -m venv .venv'
