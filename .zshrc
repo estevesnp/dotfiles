@@ -66,6 +66,7 @@ alias activate='source .venv/bin/activate'
 alias init-ssh='eval $(ssh-agent -s) && ssh-add'
 alias golint='golangci-lint run'
 alias bzf='fzf --preview="bat --color=always {}"'
+alias dv='dirs -v'
 
 #########
 # History
