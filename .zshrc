@@ -51,10 +51,10 @@ fo() {                  # [f]uzzy check[o]ut
   git branch --no-color --sort=-committerdate --format='%(refname:short)' | fzf --header 'git checkout' | xargs git checkout
 }
 po() {                  # [p]ull request check[o]ut
-  gh pr list | fzf --header 'checkout PR' | awk '{print $(NF-5)}' | xargs git checkout
+  gh pr list | fzf --header 'checkout PR' | awk '{print $(NF-2)}' | xargs git checkout
 }
 mpo() {                  # [m]y [p]ull request check[o]ut
-  gh pr list --author "@me" | fzf --header 'checkout PR' | awk '{print $(NF-5)}' | xargs git checkout
+  gh pr list --author "@me" | fzf --header 'checkout my PR' | awk '{print $(NF-2)}' | xargs git checkout
 }
 
 # python
