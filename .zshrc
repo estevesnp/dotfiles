@@ -45,6 +45,7 @@ alias grs='git restore --staged'
 alias gp='git push'
 alias gpf='git push --force-with-lease'
 alias gpl='git pull'
+alias gpr='git pull origin main --rebase'
 alias cdr='cd $(git rev-parse --show-toplevel)' # cd to git Root
 alias co='git checkout' # [c]heck [o]ut
 fo() {                  # [f]uzzy check[o]ut
