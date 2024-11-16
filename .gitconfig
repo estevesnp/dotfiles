@@ -1,13 +1,11 @@
 [user]
 	email = nuno.pinto@live.com
 	name = estevesnp
-
 [alias]
     staash = stash --all
-
-[pull]
-	rebase = true
 [rerere]
 	enabled = true
 [branch]
 	sort = -committerdate
+[init]
+	defaultBranch = main
