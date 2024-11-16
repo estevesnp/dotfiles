@@ -44,6 +44,7 @@ alias gr='git restore'
 alias grs='git restore --staged'
 alias gp='git push'
 alias gpf='git push --force-with-lease'
+alias gpb='git push -u origin $(git branch --show-current)'
 alias gpl='git pull'
 alias gpr='git pull origin main --rebase'
 alias cdr='cd $(git rev-parse --show-toplevel)' # cd to git Root
@@ -58,6 +59,12 @@ mpo() {                  # [m]y [p]ull request check[o]ut
   gh pr list --author "@me" | fzf --header 'checkout my PR' | awk '{print $(NF-2)}' | xargs git checkout
 }
 
+# go
+alias golint='golangci-lint run'
+
+# zig
+alias z='zig build'
+
 # python
 alias venv-init='python3 -m venv .venv'
 alias venv-install='pip install -r requirements.txt'
@@ -65,7 +72,6 @@ alias activate='source .venv/bin/activate'
 
 # misc
 alias init-ssh='eval $(ssh-agent -s) && ssh-add'
-alias golint='golangci-lint run'
 alias bzf='fzf --preview="bat --color=always {}"'
 alias dv='dirs -v'
 
