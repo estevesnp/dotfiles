@@ -24,7 +24,22 @@ alias m='make'
 alias vim='nvim'
 alias n='nvim .'
 fn() {
-  local file=$(fzf --preview="bat --color=always {}")
+  if ! command -v fzf &> /dev/null; then
+    echo "fzf not found in PATH, exiting"
+    return 1
+  fi
+
+  local file query_flag=""
+  
+  [[ -n "$1" ]] && query_flag="--query=$1"
+
+  local preview_cmd="cat {}"
+  if command -v bat &> /dev/null; then
+    preview_cmd="bat --color=always {}"
+  fi
+
+  file=$(fzf --header='open in nvim' --preview="$preview_cmd" $query_flag)
+
   [[ -n "$file" ]] && nvim "$file"
 }
 
@@ -122,12 +137,12 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_MANUAL_REBIND=""  # Reduces prompt lag from autosuggestions
 
 # zoxide
-if hash zoxide 2> /dev/null; then
-    eval "$(zoxide init zsh --cmd cd)"
+if command -v zoxide &> /dev/null; then
+    source <(zoxide init zsh --cmd cd)
 fi
 
 # fzf
-if hash fzf 2> /dev/null; then
+if command -v fzf &> /dev/null; then
     source <(fzf --zsh)
 fi
 
