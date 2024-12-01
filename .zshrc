@@ -57,12 +57,13 @@ alias gd='git diff'
 alias gdc='git diff --cached'
 alias gr='git restore'
 alias grs='git restore --staged'
-alias gl='git log --oneline --graph --decorate --parents'
+alias gl='git log'
+alias glo='git log --oneline --graph --decorate --parents'
 alias gp='git push'
 alias gpf='git push --force-with-lease'
 alias gpb='git push -u origin $(git branch --show-current)'
 alias gpl='git pull'
-alias gpr='git pull origin main --rebase'
+alias gpr='git rebase'
 alias cdr='cd $(git rev-parse --show-toplevel)' # cd to git Root
 alias co='git checkout' # [c]heck [o]ut
 fo() {                  # [f]uzzy check[o]ut
