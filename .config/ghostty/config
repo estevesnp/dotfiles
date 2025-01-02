@@ -1,5 +1,6 @@
 cursor-style = block
 cursor-style-blink = false
+cursor-color = gray
 cursor-opacity = 0.7
 shell-integration-features = no-cursor
 
@@ -10,6 +11,7 @@ clipboard-trim-trailing-spaces = true
 font-family = CommitMono Nerd Font
 font-size = 12
 
-theme = rose-pine
-
+gtk-adwaita = false
 gtk-titlebar = false
+
+theme = rose-pine
