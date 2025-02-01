@@ -65,7 +65,7 @@ alias gpf='git push --force-with-lease'
 alias gpb='git push -u origin $(git branch --show-current)'
 alias gpl='git pull'
 alias gpr='git rebase'
-alias cdr='cd $(git rev-parse --show-toplevel)' # cd to git Root
+alias cdr='cd $(git rev-parse --show-toplevel)' # cd to git root
 alias co='git checkout' # [c]heck [o]ut
 fo() {                  # [f]uzzy check[o]ut
   git branch --no-color --sort=-committerdate --format='%(refname:short)' | fzf --header 'git checkout' | xargs git checkout
