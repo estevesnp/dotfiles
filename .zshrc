@@ -81,7 +81,7 @@ mpo() {                  # [m]y [p]ull request check[o]ut
 alias golint='golangci-lint run'
 
 # zig
-alias z='zig build'
+alias zb='zig build'
 
 # python
 alias venv-init='python3 -m venv .venv'
