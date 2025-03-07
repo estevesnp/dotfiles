@@ -19,14 +19,22 @@ git submodule update --init --recursive
 ## main apps
 
 - zsh
-- stow
-- alacritty
+- git
 - nvim
+- ghostty
+- stow
 - fzf
 - tmux
-- tms    `cargo install --locked tmux-sessionizer`
-- zoxide `cargo install --locked zoxide`
-- yazi   `cargo install --locked yazi-fm yazi-cli`
+  - `git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+- zoxide
+  - `cargo install --locked zoxide`
+- yazi
+  - `cargo install --locked yazi-fm yazi-cli`
+- tms
+  - `cargo install --locked tmux-sessionizer`
+  - `tms config --paths path/to/projects`
+- bat
+  - `bat cache --build`
 
 ## dependencies
 
@@ -37,5 +45,5 @@ git submodule update --init --recursive
 - fd (telescope)
 - ripgrep (telescope)
 - go (gopls and tools)
-- rust (rust-analyzer and crates)
+- rust (rust-analyzer)
 - npm (ts-server and quicktype)
