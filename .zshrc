@@ -18,6 +18,8 @@ alias l='ls -lah --color=auto'
 alias grep='grep --color=auto'
 alias c='clear'
 alias m='make'
+alias dot='cd ~/.dotfiles/'
+alias dotnv='cd ~/.config/nvim/'
 
 # neovim
 alias vim='nvim'
