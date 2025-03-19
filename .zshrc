@@ -47,6 +47,7 @@ fn() {
 # tmux
 alias tn='tmux new -s'
 alias ta='tmux attach -t'
+alias tls='tmux ls'
 
 # git
 alias gs='git status'
