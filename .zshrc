@@ -22,7 +22,6 @@ alias dot='cd ~/.dotfiles/'
 alias dotnv='cd ~/.config/nvim/'
 
 # neovim
-alias vim='nvim'
 alias n='nvim .'
 fn() {
   if ! command -v fzf &> /dev/null; then
