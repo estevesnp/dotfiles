@@ -57,6 +57,7 @@ alias gc='git commit'
 alias gcm='git commit -m'
 alias gca='git commit --amend'
 alias gce='git commit --amend --no-edit'
+alias gcl='git clean -df'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdw='git diff --word-diff'
@@ -88,6 +89,8 @@ alias golint='golangci-lint run'
 
 # zig
 alias zb='zig build'
+alias zbr='zig build run'
+alias zbt='zig build test'
 
 # python
 alias venv-init='python3 -m venv .venv'
