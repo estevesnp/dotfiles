@@ -59,15 +59,19 @@ function ft() {
 }
 
 # git
-alias gs='git status'
+alias gs='git status --short'
+alias gsv='git status --verbose'
 alias ga='git add'
 alias gaa='git add -A'
-alias gap='git apply --3way'
-alias gc='git commit'
+alias gap='git add --patch'
+alias ga3='git apply --3way'
+alias gc='git commit --verbose'
 alias gcm='git commit -m'
 alias gca='git commit --amend'
 alias gce='git commit --amend --no-edit'
-alias gcl='git clean -df'
+alias gcl='git clone'
+alias gcl1='git clone --depth 1'
+alias gclean='git clean -df'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdw='git diff --word-diff'
