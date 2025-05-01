@@ -42,8 +42,8 @@ git submodule update --init --recursive
 
 - gcc (tree-sitter)
 - xclip (clipboard, check `:h clipboard`)
-- fd (telescope)
-- ripgrep (telescope)
+- ripgrep (fzf)
+- fd (fzf)
 - go (gopls and tools)
 - rust (rust-analyzer)
 - npm (ts-server and quicktype)
