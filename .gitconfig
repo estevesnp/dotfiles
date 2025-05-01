@@ -1,13 +1,35 @@
 [user]
 	email = nuno.pinto@live.com
 	name = estevesnp
+[url "git@github.com:"]
+    insteadOf = "gh:"
+[url "git@github.com:estevesnp/"]
+    insteadOf = "me:"
+
 [alias]
     staash = stash --all
+
+[init]
+	defaultBranch = main
+[branch]
+	sort = -committerdate
+[tag]
+	sort = -taggerdate
+
+[push]
+    autoSetupRemote = true
+    default = current
+
 [pull]
+    default = current
 	rebase = true
 [rerere]
 	enabled = true
-[branch]
-	sort = -committerdate
-[init]
-	defaultBranch = main
+
+[status]
+    branch = true
+    showUntrackedFiles = all
+    showStash = true
+
+[interactive]
+    singlekey = true
