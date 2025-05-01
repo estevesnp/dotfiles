@@ -8,7 +8,7 @@ TERM = "xterm-256color"
 
 # Mouse configuration
 [mouse]
-hide_when_typing = true
+hide_when_typing = false
 
 # Window configuration
 [window.dimensions]

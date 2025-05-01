@@ -47,6 +47,16 @@ fn() {
 alias tn='tmux new -s'
 alias ta='tmux attach -t'
 alias tls='tmux ls'
+function ft() {
+  if ! command -v fzf &> /dev/null; then
+    echo "fzf not found in PATH, exiting"
+    return 1
+  fi
+
+  local session=$(tmux ls | fzf --header='attach to tmux session' | cut -d: -f1)
+
+  [[ -n "$session" ]] && tmux attach -t "$session"
+}
 
 # git
 alias gs='git status'
