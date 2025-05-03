@@ -6,6 +6,14 @@ import = ["~/.config/alacritty/themes/rose-pine.toml"]
 [env]
 TERM = "xterm-256color"
 
+# Cursor configuration
+[cursor.style]
+shape = "Block"
+
+[colors.cursor]
+cursor = "0xcfcde2"
+text = "0x000000"
+
 # Mouse configuration
 [mouse]
 hide_when_typing = false
