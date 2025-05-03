@@ -22,6 +22,7 @@ alias dot='cd ~/.dotfiles/'
 alias dotnv='cd ~/.config/nvim/'
 
 # neovim
+alias vim='nvim'
 alias n='nvim .'
 fn() {
   if ! command -v fzf &> /dev/null; then
@@ -53,7 +54,13 @@ function ft() {
     return 1
   fi
 
-  local session=$(tmux ls | fzf --header='attach to tmux session' | cut -d: -f1)
+  local sessions
+  if ! sessions=$(tmux ls 2>/dev/null); then
+    echo "no tmux sessions found, exiting"
+    return 1
+  fi
+
+  local session=$(fzf --header='attach to tmux session' <<< "$sessions" | cut -d: -f1)
 
   [[ -n "$session" ]] && tmux attach -t "$session"
 }
