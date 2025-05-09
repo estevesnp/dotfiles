@@ -24,6 +24,7 @@ alias dotnv='cd ~/.config/nvim/'
 # neovim
 alias vim='nvim'
 alias n='nvim .'
+
 fn() {
   if ! command -v fzf &> /dev/null; then
     echo "fzf not found in PATH, exiting"
@@ -42,27 +43,6 @@ fn() {
   file=$(fzf --header='open in nvim' --preview="$preview_cmd" $query_flag)
 
   [[ -n "$file" ]] && nvim "$file"
-}
-
-# tmux
-alias tn='tmux new -s'
-alias ta='tmux attach -t'
-alias tls='tmux ls'
-function ft() {
-  if ! command -v fzf &> /dev/null; then
-    echo "fzf not found in PATH, exiting"
-    return 1
-  fi
-
-  local sessions
-  if ! sessions=$(tmux ls 2>/dev/null); then
-    echo "no tmux sessions found, exiting"
-    return 1
-  fi
-
-  local session=$(fzf --header='attach to tmux session' <<< "$sessions" | cut -d: -f1)
-
-  [[ -n "$session" ]] && tmux attach -t "$session"
 }
 
 # git
@@ -95,23 +75,89 @@ alias grl='git reflog --date=iso'
 alias gb='git blame -C -C -C'
 alias cdr='cd $(git rev-parse --show-toplevel)' # cd to git root
 alias co='git checkout' # [c]heck [o]ut
+
 fo() {                  # [f]uzzy check[o]ut
-  git branch --no-color --sort=-committerdate --format='%(refname:short)' | fzf --header 'git checkout' | xargs git checkout
-}
-po() {                  # [p]ull request check[o]ut
-  gh pr list | fzf --header 'checkout PR' | awk '{print $(NF-2)}' | xargs git checkout
-}
-mpo() {                  # [m]y [p]ull request check[o]ut
-  gh pr list --author "@me" | fzf --header 'checkout my PR' | awk '{print $(NF-2)}' | xargs git checkout
+  if ! command -v fzf &> /dev/null; then
+    echo "fzf not found in PATH, exiting"
+    return 1
+  fi
+
+  local branch=$(git branch --no-color --sort=-committerdate --format='%(refname:short)' | fzf --header 'git checkout')
+  [[ -n "$branch" ]] && git checkout "$branch"
 }
 
-# go
-alias golint='golangci-lint run'
+po() {                  # [p]ull request check[o]ut
+  if ! command -v fzf &> /dev/null; then
+    echo "fzf not found in PATH, exiting"
+    return 1
+  fi
+  if ! command -v gh &> /dev/null; then
+    echo "gh not found in PATH, exiting"
+    return 1
+  fi
+
+  local branch=$(gh pr list | fzf --header 'checkout PR' | awk '{print $(NF-2)}')
+  [[ -n "$branch" ]] && git checkout "$branch"
+}
+
+mpo() {                  # [m]y [p]ull request check[o]ut
+  if ! command -v fzf &> /dev/null; then
+    echo "fzf not found in PATH, exiting"
+    return 1
+  fi
+  if ! command -v gh &> /dev/null; then
+    echo "gh not found in PATH, exiting"
+    return 1
+  fi
+
+  local branch=$(gh pr list --author "@me" | fzf --header 'checkout my PR' | awk '{print $(NF-2)}')
+  [[ -n "$branch" ]] && git checkout "$branch"
+}
+
+# tmux
+alias tn='tmux new -s'
+alias ta='tmux attach -t'
+alias tls='tmux ls'
+
+function ft() {
+  if ! command -v fzf &> /dev/null; then
+    echo "fzf not found in PATH, exiting"
+    return 1
+  fi
+
+  local sessions
+  if ! sessions=$(tmux ls 2>/dev/null); then
+    echo "no tmux sessions found, exiting"
+    return 1
+  fi
+
+  local session=$(fzf --header 'attach to tmux session' <<< "$sessions" | cut -d: -f1)
+
+  [[ -n "$session" ]] && tmux attach -t "$session"
+}
+
+# yazi
+function y() {
+  if ! command -v yazi &> /dev/null; then
+    echo "yazi not found in PATH, exiting"
+    return 1
+  fi
+
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
 
 # zig
 alias zb='zig build'
 alias zbr='zig build run'
 alias zbt='zig build test'
+
+# go
+alias golint='golangci-lint run'
 
 # python
 alias venv-init='python3 -m venv .venv'
@@ -122,6 +168,7 @@ alias activate='source .venv/bin/activate'
 alias init-ssh='eval $(ssh-agent -s) && ssh-add'
 alias bzf='fzf --preview="bat --color=always {}"'
 alias dv='dirs -v'
+
 
 #########
 # History
@@ -168,25 +215,15 @@ source ~/.zsh/git-prompt.zsh/git-prompt.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_MANUAL_REBIND=""  # Reduces prompt lag from autosuggestions
 
-# zoxide
-if command -v zoxide &> /dev/null; then
-    source <(zoxide init zsh --cmd cd)
-fi
-
 # fzf
 if command -v fzf &> /dev/null; then
     source <(fzf --zsh)
 fi
 
-# yazi
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
+# zoxide
+if command -v zoxide &> /dev/null; then
+    source <(zoxide init zsh --cmd cd)
+fi
 
 
 ########
