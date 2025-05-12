@@ -26,16 +26,15 @@ alias vim='nvim'
 alias n='nvim .'
 
 fn() {
-  local file query_flag=""
-  
-  [[ -n "$1" ]] && query_flag="--query=$1"
+  local query_flag="--query=$1"
 
   local preview_cmd="cat {}"
   if command -v bat &> /dev/null; then
     preview_cmd="bat --color=always {}"
   fi
 
-  fzf --header='open in nvim' --preview="$preview_cmd" $query_flag | xargs nvim
+  local file=$(fzf --header='open in nvim' --preview="$preview_cmd" "$query_flag")
+  [[ -n $file ]] && nvim "$file"
 }
 
 # git
@@ -132,6 +131,7 @@ function y() {
 alias zb='zig build'
 alias zbr='zig build run'
 alias zbt='zig build test'
+alias zbp='zig build -p ~/.local'
 
 # go
 alias golint='golangci-lint run'
