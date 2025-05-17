@@ -106,6 +106,7 @@ ghcl() {
 alias tn='tmux new -s'
 alias ta='tmux attach -t'
 alias tls='tmux ls'
+alias tkill='tmux kill-server'
 
 function ft() {
   local sessions
@@ -114,7 +115,8 @@ function ft() {
     return 1
   fi
 
-  fzf --header 'attach to tmux session' <<< "$sessions" | cut -d: -f1 | xargs tmux attach -t
+  local session=$(fzf --header 'attach to tmux session' <<< "$sessions" | cut -d: -f1)
+  [[ -n $session ]] && tmux attach -t $session
 }
 
 # yazi
