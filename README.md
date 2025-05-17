@@ -30,9 +30,6 @@ git submodule update --init --recursive
   - `cargo install --locked zoxide`
 - yazi
   - `cargo install --locked yazi-fm yazi-cli`
-- tms
-  - `cargo install --locked tmux-sessionizer`
-  - `tms config --paths path/to/projects`
 - bat
   - `bat cache --build`
 
