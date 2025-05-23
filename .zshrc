@@ -147,6 +147,7 @@ alias activate='source .venv/bin/activate'
 alias init-ssh='eval $(ssh-agent -s) && ssh-add'
 alias bzf='fzf --preview="bat --color=always {}"'
 alias dv='dirs -v'
+alias e='echo "exit code: $?"'
 
 
 #########
