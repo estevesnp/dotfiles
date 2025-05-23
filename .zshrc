@@ -33,7 +33,7 @@ fn() {
     preview_cmd="bat --color=always {}"
   fi
 
-  local file=$(fzf --header='open in nvim' --preview="$preview_cmd" "$query_flag")
+  local file=$(fzf --reverse --header='open in nvim' --preview="$preview_cmd" "$query_flag")
   [[ -n $file ]] && nvim "$file"
 }
 
@@ -69,7 +69,7 @@ alias cdr='cd $(git rev-parse --show-toplevel)' # cd to git root
 alias co='git checkout' # [c]heck [o]ut
 
 fo() {                  # [f]uzzy check[o]ut
-  git branch --no-color --sort=-committerdate --format='%(refname:short)' | fzf --header 'git checkout' | xargs git checkout
+  git branch --no-color --sort=-committerdate --format='%(refname:short)' | fzf --reverse --header 'git checkout' | xargs git checkout
 }
 
 po() {                  # [p]ull request check[o]ut
@@ -78,7 +78,7 @@ po() {                  # [p]ull request check[o]ut
     return 1
   fi
 
-  gh pr list | fzf --header 'checkout PR' | awk '{print $(NF-2)}' | xargs git checkout
+  gh pr list | fzf --reverse --header 'checkout PR' | awk '{print $(NF-2)}' | xargs git checkout
 }
 
 mpo() {                  # [m]y [p]ull request check[o]ut
@@ -87,7 +87,7 @@ mpo() {                  # [m]y [p]ull request check[o]ut
     return 1
   fi
 
-  gh pr list --author "@me" | fzf --header 'checkout my PR' | awk '{print $(NF-2)}' | xargs git checkout
+  gh pr list --author "@me" | fzf --reverse --header 'checkout my PR' | awk '{print $(NF-2)}' | xargs git checkout
 }
                          # [g]it[h]ub [cl]one
 ghcl() {
@@ -97,7 +97,7 @@ ghcl() {
   fi
 
   gh repo ls --json name,visibility,pushedAt --template '{{range .}}{{tablerow .name .visibility .pushedAt}}{{end}}' |\
-  fzf --header 'clone a repo' |\
+  fzf --reverse --header 'clone a repo' |\
   awk '{print $1}' |\
   xargs gh repo clone
 }
@@ -115,7 +115,7 @@ function ft() {
     return 1
   fi
 
-  local session=$(fzf --header 'attach to tmux session' <<< "$sessions" | cut -d: -f1)
+  local session=$(fzf --reverse --header 'attach to tmux session' <<< "$sessions" | cut -d: -f1)
   [[ -n $session ]] && tmux attach -t $session
 }
 
@@ -145,7 +145,7 @@ alias activate='source .venv/bin/activate'
 
 # misc
 alias init-ssh='eval $(ssh-agent -s) && ssh-add'
-alias bzf='fzf --preview="bat --color=always {}"'
+alias bzf='fzf --reverse --preview="bat --color=always {}"'
 alias dv='dirs -v'
 alias e='echo "exit code: $?"'
 
