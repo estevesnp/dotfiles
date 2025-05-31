@@ -9,6 +9,7 @@ else
 
   cat > "$GHOSTTY_MAC_FILE" <<EOF
 font-size = 14
+
 EOF
 
 fi
