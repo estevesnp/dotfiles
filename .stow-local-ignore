@@ -1,5 +1,9 @@
+# git stuff
 README.md
 \.gitconfig
 \.git
 \.gitignore
 \.gitmodules
+
+# scripts
+.*\.sh
