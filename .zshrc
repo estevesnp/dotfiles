@@ -143,6 +143,9 @@ alias venv-init='python3 -m venv .venv'
 alias venv-install='pip install -r requirements.txt'
 alias activate='source .venv/bin/activate'
 
+# k8s
+alias k='kubectl'
+
 # misc
 alias init-ssh='eval $(ssh-agent -s) && ssh-add'
 alias bzf='fzf --reverse --preview="bat --color=always {}"'
