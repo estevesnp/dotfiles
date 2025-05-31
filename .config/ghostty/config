@@ -16,3 +16,5 @@ gtk-adwaita = false
 gtk-titlebar = false
 
 theme = rose-pine
+
+config-file = ?./macos
