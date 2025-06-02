@@ -38,6 +38,21 @@ fn() {
 }
 
 # git
+
+HASH="%C(always,yellow)%h%C(always,reset)"
+RELATIVE_TIME="%C(always,green)%ar%C(always,reset)"
+AUTHOR="%C(always,bold blue)%an%C(always,reset)"
+REFS="%C(always,red)%d%C(always,reset)"
+SUBJECT="%s"
+
+FORMAT="$HASH $RELATIVE_TIME{$AUTHOR{$REFS $SUBJECT"
+
+formatted_git_log() {
+  git log --graph --pretty="tformat:$FORMAT" $* |
+  column -t -s '{' |
+  less -XRS --quit-if-one-screen
+}
+
 alias gs='git status --short'
 alias gsv='git status --verbose'
 alias ga='git add'
@@ -56,8 +71,8 @@ alias gdc='git diff --cached'
 alias gdw='git diff --word-diff'
 alias gr='git restore'
 alias grs='git restore --staged'
-alias gl='git log'
-alias glo='git log --oneline --graph --decorate'
+alias gl='formatted_git_log'
+alias glog='git log'
 alias gp='git push'
 alias gpf='git push --force-with-lease'
 alias gpb='git push -u origin $(git branch --show-current)'
