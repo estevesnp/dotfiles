@@ -53,8 +53,8 @@ formatted_git_log() {
   less -XRS --quit-if-one-screen
 }
 
-alias gs='git status --short'
-alias gsv='git status --verbose'
+alias gs='git status'
+alias gss='git status --short'
 alias ga='git add'
 alias gaa='git add -A'
 alias gap='git add --patch'
