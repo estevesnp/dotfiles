@@ -20,6 +20,8 @@ there are platform specific scripts setup scripts:
 
 - `./macos.sh`
 
+or just run [setup.sh](./setup.sh)
+
 ## main apps
 
 - zsh
