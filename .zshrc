@@ -4,7 +4,7 @@
 export EDITOR=nvim
 export VISUAL="$EDITOR"
 export GOPATH=~/.go
-export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.scripts
 export BAT_THEME="rose-pine"
 
 
@@ -33,7 +33,8 @@ fn() {
     preview_cmd="bat --color=always {}"
   fi
 
-  local file=$(fzf --reverse --header='open in nvim' --preview="$preview_cmd" "$query_flag")
+  local file
+  file=$(fzf --reverse --header='open in nvim' --preview="$preview_cmd" "$query_flag")
   [[ -n $file ]] && nvim "$file"
 }
 
@@ -48,7 +49,7 @@ SUBJECT="%s"
 FORMAT="$HASH $RELATIVE_TIME{$AUTHOR{$REFS $SUBJECT"
 
 formatted_git_log() {
-  git log --graph --pretty="tformat:$FORMAT" $* |
+  git log --graph --pretty="tformat:$FORMAT" "$*" |
   column -t -s '{' |
   less -XRS --quit-if-one-screen
 }
@@ -130,13 +131,15 @@ function ft() {
     return 1
   fi
 
-  local session=$(fzf --reverse --header 'attach to tmux session' <<< "$sessions" | cut -d: -f1)
+  local session
+  session=$(fzf --reverse --header 'attach to tmux session' <<< "$sessions" | cut -d: -f1)
   [[ -n $session ]] && tmux attach -t $session
 }
 
 # yazi
 function y() {
-  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  local tmp
+  tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
   yazi "$@" --cwd-file="$tmp"
   if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
     builtin cd -- "$cwd"
