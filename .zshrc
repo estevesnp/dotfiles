@@ -23,6 +23,7 @@ alias dotnv='cd ~/.config/nvim/'
 
 # neovim
 alias vim='nvim'
+alias cvim='nvim -u NORC'
 alias n='nvim .'
 
 fn() {
