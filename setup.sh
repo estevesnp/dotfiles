@@ -9,3 +9,7 @@ git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 cp .gitconfig ~
 
 stow .
+
+if [[ "$(uname)" == "Darwin" ]]; then
+    ./macos.sh
+fi
