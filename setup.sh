@@ -4,7 +4,10 @@ set -e
 
 git submodule update --init --recursive
 
-git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+if [ ! -e "$HOME/.tmux/plugins/tpm" ]; then
+    git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
 
 if [ ! -e "$HOME/.gitconfig" ]; then
     cp .gitconfig "$HOME"
