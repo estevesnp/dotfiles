@@ -4,7 +4,7 @@
 export EDITOR=nvim
 export VISUAL="$EDITOR"
 export GOPATH=~/.go
-export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.scripts
+export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.cargo/bin
 export BAT_THEME="rose-pine"
 
 
@@ -50,7 +50,7 @@ SUBJECT="%s"
 FORMAT="$HASH $RELATIVE_TIME{$AUTHOR{$REFS $SUBJECT"
 
 formatted_git_log() {
-  git log --graph --pretty="tformat:$FORMAT" "$*" |
+  git log --graph --pretty="tformat:$FORMAT" $* |
   column -t -s '{' |
   less -XRS --quit-if-one-screen
 }
