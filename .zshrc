@@ -1,3 +1,9 @@
+PRE_ZSHRC_INIT="$HOME/.zshrc-pre-init"
+POST_ZSHRC_INIT="$HOME/.zshrc-post-init"
+
+# run pre .zshrc init script if it exists
+[[ -f "$PRE_ZSHRC_INIT" ]] && source "$PRE_ZSHRC_INIT"
+
 #########
 # Exports 
 
@@ -254,3 +260,6 @@ ZSH_THEME_GIT_PROMPT_STASHED=""
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
 
 PROMPT='%F{174}%m%f::%F{198}%2~%f $(gitprompt)$ '
+
+# run post .zshrc init script if it exists
+[[ -f "$POST_ZSHRC_INIT" ]] && source "$POST_ZSHRC_INIT"
