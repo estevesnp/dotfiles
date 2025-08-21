@@ -27,6 +27,12 @@ alias m='make'
 alias dot='cd ~/.dotfiles/'
 alias dotnv='cd ~/.config/nvim/'
 
+cf() {
+  local dir
+  dir=$(fzf --header="cd to file's dir" | xargs dirname) || return
+  cd "$dir" || return
+}
+
 # neovim
 alias vim='nvim'
 alias cvim='nvim -u NORC'
@@ -92,7 +98,9 @@ alias cdr='cd $(git rev-parse --show-toplevel)' # cd to git root
 alias co='git checkout' # [c]heck [o]ut
 
 fo() {                  # [f]uzzy check[o]ut
-  git branch --no-color --sort=-committerdate --format='%(refname:short)' | fzf --reverse --header 'git checkout' | xargs git checkout
+  local branch
+  branch=$(git branch --no-color --sort=-committerdate --format='%(refname:short)' | fzf --reverse --header 'git checkout') || return
+  [ -n "$branch" ] && git checkout "$branch"
 }
 
 po() {                  # [p]ull request check[o]ut
@@ -101,7 +109,9 @@ po() {                  # [p]ull request check[o]ut
     return 1
   fi
 
-  gh pr list | fzf --reverse --header 'checkout PR' | awk '{print $(NF-2)}' | xargs git checkout
+  local branch
+  branch=$(gh pr list | fzf --reverse --header 'checkout PR' | awk '{print $(NF-2)}') || return
+  [ -n "$branch" ] && git checkout "$branch"
 }
 
 mpo() {                  # [m]y [p]ull request check[o]ut
@@ -110,19 +120,22 @@ mpo() {                  # [m]y [p]ull request check[o]ut
     return 1
   fi
 
-  gh pr list --author "@me" | fzf --reverse --header 'checkout my PR' | awk '{print $(NF-2)}' | xargs git checkout
+  local branch
+  branch=$(gh pr list --author "@me" | fzf --reverse --header 'checkout my PR' | awk '{print $(NF-2)}') || return
+  [ -n "$branch" ] && git checkout "$branch"
 }
-                         # [g]it[h]ub [cl]one
-ghcl() {
+
+ghcl() {                 # [g]it[h]ub [cl]one
   if ! command -v gh &> /dev/null; then
     echo "gh not found in PATH, exiting"
     return 1
   fi
 
-  gh repo ls --json name,visibility,pushedAt --template '{{range .}}{{tablerow .name .visibility .pushedAt}}{{end}}' |\
-  fzf --reverse --header 'clone a repo' |\
-  awk '{print $1}' |\
-  xargs gh repo clone
+  local repo
+  repo=$(gh repo ls --json name,visibility,pushedAt --template '{{range .}}{{tablerow .name .visibility .pushedAt}}{{end}}' |\
+    fzf --reverse --header 'clone a repo' |\
+    awk '{print $1}') || return
+  [ -n "$repo" ] && gh repo clone "$repo"
 }
 
 # tmux
@@ -139,8 +152,8 @@ function ft() {
   fi
 
   local session
-  session=$(fzf --reverse --header 'attach to tmux session' <<< "$sessions" | cut -d: -f1)
-  [[ -n $session ]] && tmux attach -t $session
+  session=$(fzf --reverse --header 'attach to tmux session' <<< "$sessions" | cut -d: -f1) || return
+  [[ -n $session ]] && tmux attach -t "$session"
 }
 
 # yazi
