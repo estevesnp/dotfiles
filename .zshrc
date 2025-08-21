@@ -29,7 +29,7 @@ alias dotnv='cd ~/.config/nvim/'
 
 cf() {
   local dir
-  dir=$(fzf --header="cd to file's dir" | xargs dirname) || return
+  dir=$(fzf --reverse --header="cd to file's dir" | xargs dirname) || return
   cd "$dir" || return
 }
 
