@@ -34,6 +34,7 @@ cf() {
 }
 
 # neovim
+alias _vim='\vim'
 alias vim='nvim'
 alias cvim='nvim -u NORC'
 alias n='nvim .'
