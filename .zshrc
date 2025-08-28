@@ -9,9 +9,10 @@ POST_ZSHRC_INIT="$HOME/.zshrc-post-init"
 
 export EDITOR=nvim
 export VISUAL="$EDITOR"
-export GOPATH=~/.go
+export GOPATH=$HOME/.go
 export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.cargo/bin
-export BAT_THEME="rose-pine"
+export MANPAGER='less -R --use-color -Dd+r -Du+b'
+export BAT_THEME='rose-pine'
 
 
 #######################
