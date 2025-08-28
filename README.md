@@ -16,10 +16,6 @@ if you forgot to clone with `--recursive`, you can run:
 git submodule update --init --recursive
 ```
 
-there are platform specific scripts setup scripts:
-
-- `./macos.sh`
-
 or just run [setup.sh](./setup.sh)
 
 ## main apps
