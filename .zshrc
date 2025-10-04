@@ -28,6 +28,13 @@ alias m='make'
 alias dot='cd ~/.dotfiles/'
 alias dotnv='cd ~/.config/nvim/'
 
+csd() {
+    local cspath
+    cspath=$(cs --print "$1") || return
+    [ -n "$cspath" ] || return
+    builtin cd -- "$cspath" || return
+}
+
 cf() {
   local dir
   dir=$(fzf --reverse --header="cd to file's dir" | xargs dirname) || return
@@ -79,9 +86,8 @@ alias gc='git commit --verbose'
 alias gcm='git commit -m'
 alias gca='git commit --amend'
 alias gce='git commit --amend --no-edit'
-alias gcl='git clean -df'
-alias gclone='git clone'
-alias gclone1='git clone --depth 1'
+alias gclean='git clean -df'
+alias gclone='git clone --depth1'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdw='git diff --word-diff'
