@@ -3,8 +3,8 @@
 set -e
 
 TPM_PATH="$HOME/.tmux/plugins/tpm"
-PRE_ZSHRC_INIT="$HOME/.zshrc-pre-init"
-POST_ZSHRC_INIT="$HOME/.zshrc-post-init"
+PRE_ZSHRC_INIT="$HOME/.zshrc_pre_init"
+POST_ZSHRC_INIT="$HOME/.zshrc_post_init"
 
 if ! command -v stow > /dev/null 2>&1; then
     echo "stow not found, the setup depends on it. please install it"

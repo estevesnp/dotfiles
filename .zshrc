@@ -1,5 +1,5 @@
-PRE_ZSHRC_INIT="$HOME/.zshrc-pre-init"
-POST_ZSHRC_INIT="$HOME/.zshrc-post-init"
+PRE_ZSHRC_INIT="$HOME/.zshrc_pre_init"
+POST_ZSHRC_INIT="$HOME/.zshrc_post_init"
 
 # run pre .zshrc init script if it exists
 [[ -f "$PRE_ZSHRC_INIT" ]] && source "$PRE_ZSHRC_INIT"
