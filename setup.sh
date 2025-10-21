@@ -50,12 +50,13 @@ done
 
 
 if command -v bat > /dev/null 2>&1; then
+    echo "building bat cache..."
     bat cache --build
 else
     echo "bat doesn't exist in path. if added, run 'bat cache --build' afterwards"
 fi
 
-utils=(nvim tmux fzf zoxide ripgrep fd bat less)
+utils=(nvim tmux fzf zoxide rg fd bat less)
 util_missing=false
 
 for util in "${utils[@]}"; do
