@@ -39,10 +39,4 @@ or just run [setup.sh](./setup.sh)
 
 ### nvim
 
-- gcc (tree-sitter)
-- xclip (clipboard, check `:h clipboard`)
-- ripgrep (fzf)
-- fd (fzf)
-- go (gopls and tools)
-- rust (rust-analyzer)
-- npm (ts-server and quicktype)
+check [nvim dependencies](https://github.com/estevesnp/nvimrc/blob/main/README.md#notable-dependencies)

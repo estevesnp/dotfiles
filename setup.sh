@@ -6,19 +6,33 @@ TPM_PATH="$HOME/.tmux/plugins/tpm"
 PRE_ZSHRC_INIT="$HOME/.zshrc_pre_init"
 POST_ZSHRC_INIT="$HOME/.zshrc_post_init"
 
-if ! command -v stow > /dev/null 2>&1; then
-    echo "stow not found, the setup depends on it. please install it"
+required_apps=(git stow)
+required_missing=false
+
+for required in "${required_apps[@]}"; do
+    if ! command -v "$required" > /dev/null 2>&1; then
+        required_missing=true
+        echo "$required not found in path, but is a required tool. please install it and re-run"
+    fi
+done
+
+if [ "$required_missing" = true ]; then
     exit 1
 fi
 
+
 if [ ! -e "$HOME/.gitconfig" ]; then
     cp .gitconfig "$HOME"
+else
+    echo ".gitconfig already exists in $HOME, skipping..."
 fi
 
 git submodule update --init --recursive
 
 if [ ! -e "$TPM_PATH" ]; then
     git clone --depth 1 https://github.com/tmux-plugins/tpm "$TPM_PATH"
+else
+    echo "tpm already exists at $TPM_PATH, skipping..."
 fi
 
 # to make sure the individual dirs inside .config get linked
@@ -29,15 +43,19 @@ stow .
 for initpath in "$PRE_ZSHRC_INIT" "$POST_ZSHRC_INIT"; do
     if [ ! -e "$initpath" ]; then
         touch "$initpath"
+    else
+        echo "$initpath already exists, skipping..."
     fi
 done
 
 
 if command -v bat > /dev/null 2>&1; then
     bat cache --build
+else
+    echo "bat doesn't exist in path. if added, run 'bat cache --build' afterwards"
 fi
 
-utils=(nvim tmux fzf zoxide ripgrep fd)
+utils=(nvim tmux fzf zoxide ripgrep fd bat less)
 util_missing=false
 
 for util in "${utils[@]}"; do
