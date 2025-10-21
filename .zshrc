@@ -239,9 +239,9 @@ autoload -Uz compinit && compinit
 #########
 # Plugins
 
-source ~/.zsh/LS_COLORS/lscolors.sh
-source ~/.zsh/git-prompt.zsh/git-prompt.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/plugins/LS_COLORS/lscolors.sh
+source ~/.zsh/plugins/git-prompt.zsh/git-prompt.zsh
+source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_MANUAL_REBIND=""  # Reduces prompt lag from autosuggestions
 
 # fzf

@@ -2,12 +2,12 @@
 	path = .config/nvim
 	url = git@github.com:estevesnp/nvimrc.git
     branch = main
-[submodule ".zsh/LS_COLORS"]
-	path = .zsh/LS_COLORS
+[submodule ".zsh/plugins/LS_COLORS"]
+	path = .zsh/plugins/LS_COLORS
 	url = https://github.com/trapd00r/LS_COLORS
-[submodule ".zsh/zsh-autosuggestions"]
-	path = .zsh/zsh-autosuggestions
+[submodule ".zsh/plugins/zsh-autosuggestions"]
+	path = .zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule ".zsh/git-prompt.zsh"]
-	path = .zsh/git-prompt.zsh
+[submodule ".zsh/plugins/git-prompt.zsh"]
+	path = .zsh/plugins/git-prompt.zsh
 	url = https://github.com/woefe/git-prompt.zsh
