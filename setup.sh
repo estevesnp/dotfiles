@@ -56,7 +56,7 @@ else
     echo "bat doesn't exist in path. if added, run 'bat cache --build' afterwards"
 fi
 
-utils=(nvim tmux fzf zoxide rg fd bat less tar curl)
+utils=(nvim tmux fzf less tar curl rg fd zoxide bat gh)
 util_missing=false
 
 for util in "${utils[@]}"; do
