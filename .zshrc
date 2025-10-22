@@ -28,13 +28,6 @@ alias m='make'
 alias dot='cd ~/.dotfiles/'
 alias dotnv='cd ~/.config/nvim/'
 
-csd() {
-    local cspath
-    cspath=$(cs --print "$1") || return
-    [ -n "$cspath" ] || return
-    builtin cd -- "$cspath" || return
-}
-
 cf() {
   local dir
   dir=$(fzf --reverse --header="cd to file's dir" | xargs dirname) || return
@@ -202,9 +195,9 @@ alias e='echo "exit code: $?"'
 #########
 # History
 
-HISTSIZE=5000                # How many lines of history to keep in memory
+HISTSIZE=10000               # How many lines of history to keep in memory
 HISTFILE=~/.zsh_history      # Where to save history to disk
-SAVEHIST=5000                # Number of history entries to save to disk
+SAVEHIST=10000               # Number of history entries to save to disk
 HISTDUP=erase                # Erase duplicates in the history file
 setopt appendhistory         # Append history to the history file (no overwriting)
 setopt sharehistory          # Share history across terminals
@@ -236,27 +229,34 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 autoload -Uz compinit && compinit
 
 
-#########
-# Plugins
+####################
+# Shell Integrations
 
-source ~/.zsh/plugins/LS_COLORS/lscolors.sh
-source ~/.zsh/plugins/git-prompt.zsh/git-prompt.zsh
-source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_MANUAL_REBIND=""  # Reduces prompt lag from autosuggestions
+if command -v cs &> /dev/null; then
+    source <(cs --shell zsh)
+fi
 
-# fzf
 if command -v fzf &> /dev/null; then
     source <(fzf --zsh)
 fi
 
-# zoxide
 if command -v zoxide &> /dev/null; then
     source <(zoxide init zsh --cmd cd)
 fi
 
 
+#########
+# Plugins
+
+source ~/.zsh/plugins/LS_COLORS/lscolors.sh
+source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_MANUAL_REBIND=""  # Reduces prompt lag from autosuggestions
+
+
 ########
 # Prompt
+
+source ~/.zsh/plugins/git-prompt.zsh/git-prompt.zsh
 
 ZSH_GIT_PROMPT_SHOW_UPSTREAM="no"
 ZSH_GIT_PROMPT_SHOW_TRACKING_COUNTS=0
