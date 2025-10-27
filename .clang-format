@@ -1,3 +1,4 @@
 ﻿IndentWidth: '4'
 AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: true
+ColumnLimit: 0
