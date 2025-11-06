@@ -37,7 +37,8 @@ cf() {
 # neovim
 alias _vim='\vim'
 alias vim='nvim'
-alias cvim='nvim -u NORC'
+alias mvim='NVIM_APPNAME=mvim nvim' # minimal nvim config, one file
+alias cvim='nvim -u NORC' # clean nvim config, nothing configured
 alias n='nvim .'
 
 fn() {
@@ -84,6 +85,7 @@ alias gclone1='git clone --depth 1'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdw='git diff --word-diff'
+alias gds='GIT_EXTERNAL_DIFF=difft DFT_DISPLAY=side-by-side git diff'
 alias gr='git restore'
 alias grs='git restore --staged'
 alias gl='formatted_git_log'
