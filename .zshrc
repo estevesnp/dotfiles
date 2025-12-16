@@ -30,8 +30,8 @@ alias dotnv='cd ~/.config/nvim/'
 
 cf() {
   local dir
-  dir=$(fzf --reverse --header="cd to file's dir" | xargs dirname) || return
-  cd "$dir" || return
+  dir=$(fzf --reverse --header="cd to file's dir" | xargs dirname)
+  [[ -n $dir ]] && cd "$dir"
 }
 
 # neovim
