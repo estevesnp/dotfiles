@@ -13,6 +13,7 @@ export GOPATH=$HOME/.go
 export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.zvm/bin
 export MANPAGER='less -R --use-color -Dd+r -Du+b'
 export BAT_THEME='rose-pine'
+export FX_THEME=3
 
 
 #######################
