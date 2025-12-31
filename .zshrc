@@ -160,7 +160,7 @@ function ft() {
   [[ -n $session ]] && tmux attach -t "$session"
 }
 
-# yazi
+# exit to last yazi directory
 function y() {
   local tmp
   tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -219,6 +219,7 @@ bindkey -e                           # Use emacs key bindings
 bindkey "^[[3~" delete-char          # Delete key
 bindkey '^p' history-search-backward # Search history back for current command
 bindkey '^n' history-search-forward  # Search history forward for current command
+bindkey '^X^Y' redo                  # Redo command line change (undo with ^X^U)
 setopt auto_cd                       # Change to directory without cd
 unsetopt nomatch                     # If a glob does not match, return the glob itself
 
@@ -230,6 +231,11 @@ export DIRSTACKSIZE=20
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 autoload -Uz compinit && compinit
+
+# Open command line in $EDITOR with Ctrl+X -> Ctrl+E
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
 
 
 ####################
