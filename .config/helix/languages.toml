@@ -1,0 +1,10 @@
+[language-server.zls]
+config = { enable_argument_placeholders = false }
+
+[[language]]
+name = "c"
+auto-format = true
+indent = { tab-width = 4, unit = "    " }
+
+[language-server.clangd]
+args = [ "--function-arg-placeholders=0" ]
