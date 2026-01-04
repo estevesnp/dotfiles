@@ -2,63 +2,60 @@
 --------- OPTIONS ---------
 ---------------------------
 
--- Cursor settings
-vim.opt.guicursor = ""
-vim.opt.cursorline = true
+-- block cursor
+vim.o.guicursor = ""
+vim.o.cursorline = true
 
--- Line numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
+-- relative line number
+vim.o.number = true
+vim.o.relativenumber = true
 
--- Indentation
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.smarttab = true
-vim.opt.smartindent = true
+-- tab / indentation opts
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.smarttab = true
+vim.o.smartindent = true
 
--- Search settings
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.inccommand = "split"
+-- / opts
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.inccommand = "split"
 
--- Always show the sign column (on the left)
-vim.opt.signcolumn = "yes"
+-- ask before erroring (e.g. closing unsaved file)
+vim.o.confirm = true
 
--- Disable line wrapping
-vim.opt.wrap = false
+-- always show gutter
+vim.o.signcolumn = "yes"
 
--- Show 80 character column
-vim.opt.colorcolumn = "80"
+-- disable wrap text
+vim.o.wrap = false
 
--- Always keep 10 lines above and below the cursor
-vim.opt.scrolloff = 10
+-- line at col 80
+vim.o.colorcolumn = "80"
 
--- Set the timeout for key sequences
-vim.opt.updatetime = 50
-vim.opt.timeoutlen = 300
+-- top and bottom scrollof
+vim.o.scrolloff = 5
 
--- Folds
-vim.opt.foldenable = false
-vim.opt.foldlevel = 99
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- key combination timeout
+vim.o.updatetime = 50
+vim.o.timeoutlen = 300
 
--- Enable netrw relative line numbers
+-- border around floating windows (e.g. K)
+vim.o.winborder = "single"
+
+-- folds
+vim.o.foldenable = false
+vim.o.foldlevel = 99
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
+-- netrw relative line number
 vim.g.netrw_bufsettings = "noma nomod nu rnu nobl nowrap ro"
 vim.g.netrw_banner = 0
 
--- Highlight when yanking text
-vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "Highlight when yanking (copying) text",
-  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
-
--- Colorscheme
+-- colorscheme
 vim.cmd("colorscheme lunaperche")
 
 ---------------------------
@@ -68,60 +65,57 @@ vim.cmd("colorscheme lunaperche")
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
-vim.keymap.set("n", "<leader>x", ":.lua<CR>")
-vim.keymap.set("v", "<leader>x", ":.lua<CR>")
+local map = vim.keymap.set
 
-vim.keymap.set("n", "<leader>rw", vim.cmd.Ex, { desc = "Open Net[R][W]" })
-vim.keymap.set("n", "-", vim.cmd.Ex, { desc = "Open Net[R][W]" })
-
-vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Make <C-c> work as <Esc>" })
-
-vim.opt.hlsearch = true
-vim.keymap.set("n", "<Esc>", function()
+map("i", "<C-c>", "<Esc>", { desc = "exit insert mode" })
+map("n", "<Esc>", function()
   vim.snippet.stop()
   vim.cmd("nohlsearch")
-end, { desc = "Remove search and snippet highlights" })
+end, { desc = "remove search and snippet highlights" })
 
-vim.keymap.set({ "n", "x" }, "<leader>y", '"+y', { desc = "[y]ank to system clipboard" })
-vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "[Y]ank to system clipboard" })
+-- clipboard / paste buffer
+map({ "n", "x" }, "<leader>y", '"+y', { desc = "yank to system clipboard" })
+map({ "n", "x" }, "<leader>d", '"_d', { desc = "delete to void register" })
+map({ "n", "x" }, "<leader>c", '"_c', { desc = "change preserving paste buffer" })
+map("x", "<leader>p", '"_dP', { desc = "paste preserving paste buffer" })
 
-vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste preserving paste register over selection" })
+-- diagnostics
+map("n", "<leader>e", vim.diagnostic.open_float, { desc = "show diagnostic message" })
+map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "open diagnostic quickfix list" })
 
-vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete to void register" })
+-- quickfix list
+map("n", "co", ":copen<CR>", { desc = "open quickfix list" })
+map("n", "cq", ":cclose<CR>", { desc = "close quickfix list" })
 
--- Leave selection in the middle of screen
-vim.keymap.set("n", "n", "nzzzv", { desc = "Better n" })
-vim.keymap.set("n", "N", "Nzzzv", { desc = "Better N" })
+-- jump tabs
+map("n", "]t", "<cmd>tabnext<CR>", { desc = "next tab" })
+map("n", "[t", "<cmd>tabprevious<CR>", { desc = "previous tab" })
 
--- Leave cursor in the middle when moving up and down
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Better <C-d>" })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Better <C-u>" })
+-- center after navigation
+map("n", "n", "nzzzv", { desc = "next search and center cursor" })
+map("n", "N", "Nzzzv", { desc = "previous search and center cursor" })
+map("n", "<C-d>", "<C-d>zz", { desc = "half page down and center cursor" })
+map("n", "<C-u>", "<C-u>zz", { desc = "half page up and center cursor" })
 
--- Quickfix
-vim.keymap.set("n", "co", ":copen<CR>", { desc = "Open Quickfix List" })
-vim.keymap.set("n", "cq", ":cclose<CR>", { desc = "Close Quickfix List" })
-vim.keymap.set("n", "cn", ":cnext<CR>", { desc = "Next Quickfix Item" })
-vim.keymap.set("n", "cp", ":cprev<CR>", { desc = "Previous Quickfix Item" })
+-- split horizontally to match tmux. still have <C-w>v for vertical and <C-w>s for horizontal
+map("n", "<C-w>b", ":split<CR>", { desc = "split buffer horizontally" })
 
--- Diagnostics
-vim.keymap.set("n", "<leader>nd", function()
-  vim.diagnostic.jump({ count = 1, float = true })
-end, { desc = "Go to next [D]iagnostic message" })
-vim.keymap.set("n", "<leader>Nd", function()
-  vim.diagnostic.jump({ count = -1, float = true })
-end, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+-- netrw
+map("n", "<leader>rw", "<cmd>Ex<CR>", { desc = "open netrw" })
+map("n", "-", "<cmd>Ex<CR>", { desc = "open netrw" })
 
--- Tabs
-vim.keymap.set("n", "<leader><Tab>", "<cmd>tabnext<CR>", { desc = "Go to next tab" })
-vim.keymap.set("n", "<leader><S-Tab>", "<cmd>tabprevious<CR>", { desc = "Go to previous tab" })
+-- source lua
+map("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "source lua file" })
+map({ "n", "x" }, "<leader>x", ":.lua<CR>", { desc = "source lua selection" })
 
--- Splits
-vim.keymap.set("n", "<C-w>b", "<cmd>split<CR>", { desc = "Split Horizontally" })
-vim.keymap.set("n", "<C-w>v", "<cmd>vsplit<CR>", { desc = "Split [V]ertically" })
-vim.keymap.set("n", "<C-Up>", "<cmd>resize +1<CR>", { desc = "Increase height" })
-vim.keymap.set("n", "<C-Down>", "<cmd>resize -1<CR>", { desc = "Decrease height" })
-vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -5<CR>", { desc = "Decrease width" })
-vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +5<CR>", { desc = "Increase width" })
+----------------------------
+--------- AUTOCMDS ---------
+----------------------------
+
+-- highlight yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
+})
