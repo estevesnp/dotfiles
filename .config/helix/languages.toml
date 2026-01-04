@@ -8,3 +8,7 @@ indent = { tab-width = 4, unit = "    " }
 
 [language-server.clangd]
 args = [ "--function-arg-placeholders=0" ]
+
+[[language]]
+name = "bash"
+file-types = [ "sh", "bash", "zsh", "zshrc", { glob = ".zshrc_*" } ]
