@@ -6,12 +6,18 @@ cursorline = true
 popup-border = "popup"
 
 [editor.statusline]
-# adds version-control to defaults
-left = ["mode", "spinner", "version-control", "file-name", "read-only-indicator", "file-modification-indicator"]
+left = [
+  "mode",
+  "spinner",
+  # added to defaults
+  "version-control",
+  "file-name",
+  "read-only-indicator",
+  "file-modification-indicator"
+]
 
 [editor.file-picker]
 hidden = false
-
 
 [keys.insert]
 C-c = "normal_mode"

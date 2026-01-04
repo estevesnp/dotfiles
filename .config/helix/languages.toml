@@ -1,13 +1,17 @@
 [language-server.zls]
 config = { enable_argument_placeholders = false }
 
+[language-server.clangd]
+args = ["--function-arg-placeholders=0"]
+
 [[language]]
 name = "c"
 auto-format = true
 indent = { tab-width = 4, unit = "    " }
 
-[language-server.clangd]
-args = [ "--function-arg-placeholders=0" ]
+[[language]]
+name = "toml"
+auto-format = true
 
 [[language]]
 name = "bash"
@@ -65,8 +69,8 @@ file-types = [
   { glob = ".yashrc" },
   { glob = ".yash_profile" },
   { glob = ".hushlogin" },
-  { glob = ".xinitrc" }, # ~/.xinitrc
-  { glob = "xinitrc" }, # /etc/X11/xinit/xinitrc
-  { glob = ".xserverrc" }, # ~/.xserverrc
-  { glob = "xserverrc" }, # /etc/X11/xinit/xserverrc
+  { glob = ".xinitrc" },  # ~/.xinitrc
+  { glob = "xinitrc" },  # /etc/X11/xinit/xinitrc
+  { glob = ".xserverrc" },  # ~/.xserverrc
+  { glob = "xserverrc" },  # /etc/X11/xinit/xserverrc
 ]

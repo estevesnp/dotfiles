@@ -1,3 +1,2 @@
 inherits = "rose_pine"
-
 "comment" = { fg = "muted" }
