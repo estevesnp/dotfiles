@@ -177,6 +177,7 @@ alias zb='zig build'
 alias zbr='zig build run'
 alias zbt='zig build test'
 alias zbp='zig build -p ~/.local'
+alias zout='zig-out/bin/*'
 
 # go
 alias golint='golangci-lint run'
