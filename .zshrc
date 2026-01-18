@@ -9,9 +9,8 @@ POST_ZSHRC_INIT="$HOME/.zshrc_post_init"
 
 export EDITOR=nvim
 export VISUAL="$EDITOR"
-export GOPATH=$HOME/.go
 export MASON_LSP_DIR="$HOME/.local/mason"
-export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.zvm/bin:$MASON_LSP_DIR/bin"
+export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.zvm/bin:$MASON_LSP_DIR/bin"
 export MANPAGER='less -R --use-color -Dd+r -Du+b'
 export BAT_THEME='rose-pine'
 export FX_THEME=3
