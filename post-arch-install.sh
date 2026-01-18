@@ -11,18 +11,15 @@ pkgs=(
     man-pages
     btop
 
-    ghostty
     tmux
-
-    zoxide
     fzf
     jq
+    zoxide
     ripgrep
     fd
     bat
     eza
     tree-sitter-cli
-    difft
 
     zvm
     rustup
@@ -33,6 +30,7 @@ pkgs=(
 
 # ask before installing
 apps=(
+    ghostty
     brave-bin
     1password
     1password-cli
