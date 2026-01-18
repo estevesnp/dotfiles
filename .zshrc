@@ -190,6 +190,9 @@ alias activate='source .venv/bin/activate'
 # k8s
 alias k='kubectl'
 
+# nix
+alias ns='nix-shell --run $SHELL'
+
 # misc
 alias init-ssh='eval $(ssh-agent -s) && ssh-add'
 alias bzf='fzf --reverse --preview="bat --color=always {}"'
@@ -269,6 +272,10 @@ ZSH_AUTOSUGGEST_MANUAL_REBIND=""  # Reduces prompt lag from autosuggestions
 
 source ~/.zsh/plugins/git-prompt.zsh/git-prompt.zsh
 
+nixprompt() {
+    [[ -n "$IN_NIX_SHELL" ]] && echo "(%F{45}nix%f)"
+}
+
 ZSH_GIT_PROMPT_SHOW_UPSTREAM="no"
 ZSH_GIT_PROMPT_SHOW_TRACKING_COUNTS=0
 ZSH_GIT_PROMPT_SHOW_LOCAL_COUNTS=0
@@ -291,7 +298,7 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[yellow]%}✚"
 ZSH_THEME_GIT_PROMPT_STASHED=""
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
 
-PROMPT='%F{174}%m%f::%F{198}%2~%f $(gitprompt)$ '
+PROMPT='%F{174}%m%f::%F{198}%2~%f $(gitprompt)$(nixprompt)$ '
 
 # run post .zshrc init script if it exists
 [[ -f "$POST_ZSHRC_INIT" ]] && source "$POST_ZSHRC_INIT"

@@ -22,6 +22,7 @@ pkgs=(
     bat
     eza
     tree-sitter-cli
+    difft
 
     zvm
     rustup
@@ -38,7 +39,7 @@ apps=(
     spotify
 )
 
-setup() {
+setup_pkgs() {
     echo 'setting up zig'
     zvm i --zls master
     zvm i --zls 0.15.2
@@ -59,7 +60,7 @@ setup-nix() {
     sudo systemctl enable --now nix-daemon
 
     echo 'adding nix unstable channel'
-    nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+    nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
     nix-channel --update
 
     echo 'nix installation done. make sure to add "~/.nix-profile/bin" to your PATH to use bins installed by "nix-env"'
@@ -86,20 +87,19 @@ if ! command -v yay &> /dev/null; then
     install_yay
 fi
 
-echo 'installing packages'
-yay -S --needed --noconfirm "${pkgs[@]}"
+read -rp 'install packages? [y/N] ' answer
+if [[ "$answer" =~ ^[yY] ]]; then
+    yay -S --needed --noconfirm "${pkgs[@]}"
+    setup_pkgs
+fi
 
-echo "install applications? (${apps[@]})"
-read -p '[y/N] ' answer
+read -rp "install applications? (${apps[*]}) [y/N] " answer
 if [[ "$answer" =~ ^[yY] ]]; then
     echo 'installing applications'
     yay -S --needed --noconfirm "${apps[@]}"
 fi
 
-echo 'running setup'
-setup
-
-read -p 'setup nix? [y/N] ' answer
+read -rp 'setup nix? [y/N] ' answer
 if [[ "$answer" =~ ^[yY] ]]; then
     echo 'setting up nix'
     setup-nix
