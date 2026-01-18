@@ -39,8 +39,8 @@ apps=(
 
 setup_pkgs() {
     echo 'setting up zig'
-    zvm i --zls master
     zvm i --zls 0.15.2
+    zvm i --zls master
 
     echo 'setting up rust'
     rustup default stable
