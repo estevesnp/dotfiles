@@ -10,6 +10,7 @@ pkgs=(
     mandoc
     man-pages
     btop
+    unzip
 
     tmux
     fzf
