@@ -27,7 +27,6 @@ or just run [setup.sh](./setup.sh)
 - stow
 - fzf
 - tmux
-  - `git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 - zoxide
   - `cargo install --locked zoxide`
 - yazi

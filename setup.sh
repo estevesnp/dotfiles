@@ -2,7 +2,6 @@
 
 set -e
 
-TPM_PATH="$HOME/.tmux/plugins/tpm"
 PRE_ZSHRC_INIT="$HOME/.zshrc_pre_init"
 POST_ZSHRC_INIT="$HOME/.zshrc_post_init"
 
@@ -28,12 +27,6 @@ else
 fi
 
 git submodule update --init --recursive
-
-if [ ! -e "$TPM_PATH" ]; then
-    git clone --depth 1 https://github.com/tmux-plugins/tpm "$TPM_PATH"
-else
-    echo "tpm already exists at $TPM_PATH, skipping..."
-fi
 
 # to make sure the individual dirs inside .config get linked
 mkdir -p "$HOME/.config"
