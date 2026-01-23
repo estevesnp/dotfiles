@@ -15,6 +15,7 @@ pkgs=(
     tmux
     fzf
     jq
+    fx
     zoxide
     ripgrep
     fd
