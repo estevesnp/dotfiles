@@ -2,6 +2,10 @@
 	path = .config/nvim
 	url = git@github.com:estevesnp/nvimrc.git
     branch = main
+[submodule ".config/tmux/rose-pine-tmux"]
+	path = .config/tmux/rose-pine-tmux
+	url = git@github.com:estevesnp/rose-pine-tmux.git
+    branch = main
 [submodule ".zsh/plugins/LS_COLORS"]
 	path = .zsh/plugins/LS_COLORS
 	url = https://github.com/trapd00r/LS_COLORS
@@ -11,6 +15,3 @@
 [submodule ".zsh/plugins/git-prompt.zsh"]
 	path = .zsh/plugins/git-prompt.zsh
 	url = https://github.com/woefe/git-prompt.zsh
-[submodule ".config/tmux/rose-pine-tmux"]
-	path = .config/tmux/rose-pine-tmux
-	url = git@github.com:estevesnp/rose-pine-tmux.git
