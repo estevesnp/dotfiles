@@ -22,26 +22,24 @@ pub fn build(b: *std.Build) void {
     const run_step = b.step("run", "run app");
     run_step.dependOn(&run_cmd.step);
 
-    { // test
-        const filters = b.option([]const []const u8, "test-filter", "Test filters") orelse &.{};
-        const exe_tests = b.addTest(.{
-            .filters = filters,
-            .root_module = exe.root_module,
-        });
+    // tests
+    const filters = b.option([]const []const u8, "test-filter", "Test filters") orelse &.{};
+    const exe_tests = b.addTest(.{
+        .filters = filters,
+        .root_module = exe.root_module,
+    });
+    const run_exe_tests = b.addRunArtifact(exe_tests);
 
-        const run_exe_tests = b.addRunArtifact(exe_tests);
+    const test_step = b.step("test", "Run tests");
+    test_step.dependOn(&run_exe_tests.step);
 
-        const test_step = b.step("test", "Run tests");
-        test_step.dependOn(&run_exe_tests.step);
-    }
+    // check
+    const check_exe = b.addExecutable(.{
+        .name = "check",
+        .root_module = exe.root_module,
+    });
 
-    { // check
-        const check_exe = b.addExecutable(.{
-            .name = "check",
-            .root_module = exe.root_module,
-        });
-
-        const check_step = b.step("check", "check app compiles");
-        check_step.dependOn(&check_exe.step);
-    }
+    const check_step = b.step("check", "check app compiles");
+    check_step.dependOn(&check_exe.step);
+    check_step.dependOn(&exe_tests.step);
 }
