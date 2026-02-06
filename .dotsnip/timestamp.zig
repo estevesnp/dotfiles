@@ -6,9 +6,7 @@ pub const Timestamp = struct {
     minutes: u6,
     seconds: u6,
 
-    pub fn init(io: Io) Io.Clock.Error!Timestamp {
-        const ts = try Io.Clock.real.now(io);
-
+    pub fn init(ts: Io.Timestamp) Timestamp {
         const e_secs: std.time.epoch.EpochSeconds = .{ .secs = @intCast(ts.toSeconds()) };
         const e_day_secs = e_secs.getDaySeconds();
         const e_day = e_secs.getEpochDay();
@@ -25,7 +23,11 @@ pub const Timestamp = struct {
         };
     }
 
-    pub fn format(self: Timestamp, writer: *Io.Writer) std.Io.Writer.Error!void {
+    pub fn now(io: Io) Timestamp {
+        return init(Io.Clock.real.now(io));
+    }
+
+    pub fn format(self: Timestamp, writer: *Io.Writer) Io.Writer.Error!void {
         try writer.print("{d:04}-{d:02}-{d:02} {d:02}:{d:02}:{d:02}", .{
             self.year,
             self.month,
