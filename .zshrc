@@ -36,8 +36,6 @@ cf() {
 }
 
 # neovim
-alias _vim='\vim'
-alias vim='nvim'
 alias mvim='NVIM_APPNAME=mvim nvim' # minimal nvim config, one file
 alias cvim='nvim -u NORC' # clean nvim config, nothing configured
 alias n='nvim .'
@@ -177,6 +175,9 @@ alias zbr='zig build run'
 alias zbt='zig build test'
 alias zbp='zig build -p ~/.local'
 alias zout='zig-out/bin/*'
+
+#odin
+alias ob='odin build . -vet -strict-style -warnings-as-errors'
 
 # go
 alias golint='golangci-lint run'
