@@ -11,6 +11,7 @@ pkgs=(
     man-pages
     btop
     unzip
+    strace
 
     tmux
     fzf
