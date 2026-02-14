@@ -20,6 +20,7 @@ pkgs=(
     zoxide
     ripgrep
     fd
+    yazi
     bat
     eza
     tree-sitter-cli
