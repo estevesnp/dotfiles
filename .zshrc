@@ -28,6 +28,7 @@ alias c='clear'
 alias m='make'
 alias dot='cd ~/.dotfiles/'
 alias dotnv='cd ~/.config/nvim/'
+alias b64d='jq -R -r @base64d'
 
 cf() {
   local dir
