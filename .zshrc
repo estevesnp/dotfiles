@@ -10,10 +10,23 @@ POST_ZSHRC_INIT="$HOME/.zshrc_post_init"
 export EDITOR=nvim
 export VISUAL="$EDITOR"
 export MASON_LSP_DIR="$HOME/.local/mason"
-export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.zvm/bin:$MASON_LSP_DIR/bin"
 export MANPAGER='less -R --use-color -Dd+r -Du+b'
 export BAT_THEME='rose-pine'
 export FX_THEME=3
+
+
+######
+# Path
+
+typeset -aU path
+path=(
+  $path
+  "$HOME/.local/bin"
+  "$HOME/go/bin"
+  "$HOME/.cargo/bin"
+  "$HOME/.zvm/bin"
+  "$MASON_LSP_DIR/bin"
+)
 
 
 #######################
@@ -196,7 +209,6 @@ alias ns='nix-shell --run $SHELL'
 
 # misc
 alias init-ssh='eval $(ssh-agent -s) && ssh-add'
-alias bzf='fzf --reverse --preview="bat --color=always {}"'
 alias dv='dirs -v'
 alias e='echo "exit code: $?"'
 
@@ -204,18 +216,14 @@ alias e='echo "exit code: $?"'
 #########
 # History
 
-HISTSIZE=10000               # How many lines of history to keep in memory
+HISTSIZE=100000              # How many lines of history to keep in memory
+SAVEHIST=100000              # Number of history entries to save to disk
 HISTFILE=~/.zsh_history      # Where to save history to disk
-SAVEHIST=10000               # Number of history entries to save to disk
-HISTDUP=erase                # Erase duplicates in the history file
-setopt appendhistory         # Append history to the history file (no overwriting)
+HISTDUP=erase                # Erase duplicates
+setopt appendhistory         # Append instead of overwrite
 setopt sharehistory          # Share history across terminals
-setopt hist_ignore_space     # Ignore commands that start with a space
-setopt hist_ignore_all_dups  # Ignore duplication command history line
-setopt hist_save_no_dups     # Don't save duplicated commands
-setopt hist_ignore_dups      # Ignore duplicated commands
-setopt hist_find_no_dups     # Don't display duplicates when searching history
-setopt incappendhistory      # Immediately append to the history file, not just when a term is killed
+setopt hist_ignore_space     # Ignore commands starting with space
+setopt incappendhistory      # Immediately append to the history file
 
 
 ######
