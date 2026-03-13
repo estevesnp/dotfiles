@@ -5,7 +5,7 @@ POST_ZSHRC_INIT="$HOME/.zshrc_post_init"
 [[ -f "$PRE_ZSHRC_INIT" ]] && source "$PRE_ZSHRC_INIT"
 
 #########
-# Exports 
+# Exports
 
 export EDITOR=nvim
 export VISUAL="$EDITOR"
@@ -281,10 +281,6 @@ ZSH_AUTOSUGGEST_MANUAL_REBIND=""  # Reduces prompt lag from autosuggestions
 
 source ~/.zsh/plugins/git-prompt.zsh/git-prompt.zsh
 
-nixprompt() {
-    [[ -n "$IN_NIX_SHELL" ]] && echo "(%F{45}nix%f)"
-}
-
 ZSH_GIT_PROMPT_SHOW_UPSTREAM="no"
 ZSH_GIT_PROMPT_SHOW_TRACKING_COUNTS=0
 ZSH_GIT_PROMPT_SHOW_LOCAL_COUNTS=0
@@ -306,6 +302,10 @@ ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg[red]%}✘"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[yellow]%}✚"
 ZSH_THEME_GIT_PROMPT_STASHED=""
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
+
+nixprompt() {
+  [[ -n "$IN_NIX_SHELL" ]] && echo "(%F{45}nix%f)"
+}
 
 PROMPT='%F{174}%m%f::%F{198}%2~%f $(gitprompt)$(nixprompt)$ '
 
