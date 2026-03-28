@@ -4,13 +4,16 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
+    const mod = b.createModule(.{
+        .root_source_file = b.path("src/main.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+
     const exe = b.addExecutable(.{
         .name = "<your exe name here>",
-        .root_module = b.createModule(.{
-            .root_source_file = b.path("src/main.zig"),
-            .target = target,
-            .optimize = optimize,
-        }),
+        .root_module = mod,
+        .use_llvm = b.option(bool, "llvm", "use llvm for executable"),
     });
 
     b.installArtifact(exe);
@@ -40,7 +43,7 @@ pub fn build(b: *std.Build) void {
     // check
     const check_exe = b.addExecutable(.{
         .name = "check",
-        .root_module = exe.root_module,
+        .root_module = mod,
     });
 
     const check_step = b.step("check", "check app compiles");
