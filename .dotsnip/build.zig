@@ -13,7 +13,7 @@ pub fn build(b: *std.Build) void {
     const exe = b.addExecutable(.{
         .name = "<your exe name here>",
         .root_module = mod,
-        .use_llvm = b.option(bool, "llvm", "use llvm for executable"),
+        .use_llvm = b.option(bool, "llvm", "Use LLVM for executable"),
     });
 
     b.installArtifact(exe);
