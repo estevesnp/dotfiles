@@ -200,6 +200,7 @@ alias golint='golangci-lint run'
 alias venv-init='python3 -m venv .venv'
 alias venv-install='pip install -r requirements.txt'
 alias activate='source .venv/bin/activate'
+alias httpy='python3 -m http.server'
 
 # k8s
 alias k='kubectl'
