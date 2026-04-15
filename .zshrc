@@ -11,6 +11,7 @@ export EDITOR=nvim
 export VISUAL="$EDITOR"
 export MASON_LSP_DIR="$HOME/.local/mason"
 export MANPAGER='less -R --use-color -Dd+r -Du+b'
+export ZIG_BUILD_ERROR_STYLE=minimal # `--error-style verbose` for defaults
 export BAT_THEME='rose-pine'
 export FX_THEME=3
 
