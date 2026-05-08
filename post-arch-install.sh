@@ -24,6 +24,7 @@ pkgs=(
     bat
     eza
     tree-sitter-cli
+    hunk
 
     zvm
     rustup
