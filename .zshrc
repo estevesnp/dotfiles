@@ -100,6 +100,9 @@ alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdw='git diff --word-diff'
 alias gds='GIT_EXTERNAL_DIFF=difft DFT_DISPLAY=side-by-side git diff'
+alias hd='hunk diff'
+alias hdc='hunk diff --cached'
+alias hdw='hunk diff --watch'
 alias gsh='git show'
 alias gr='git restore'
 alias grs='git restore --staged'
@@ -237,7 +240,6 @@ bindkey "^[[3~" delete-char          # Delete key
 bindkey '^p' history-search-backward # Search history back for current command
 bindkey '^n' history-search-forward  # Search history forward for current command
 bindkey '^X^Y' redo                  # Redo command line change (undo with ^X^U)
-setopt auto_cd                       # Change to directory without cd
 unsetopt nomatch                     # If a glob does not match, return the glob itself
 
 # See last dirs with `dirs -v`
