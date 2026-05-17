@@ -24,15 +24,16 @@ or just run [setup.sh](./setup.sh)
 - git
 - nvim
 - ghostty
+  - can configer local overrides in `.config/ghostty/local.config`
 - stow
 - fzf
 - tmux
 - zoxide
-  - `cargo install --locked zoxide`
+  - can install with `cargo install --locked zoxide`
 - yazi
-  - `cargo install --locked yazi-fm yazi-cli`
+  - can install with `cargo install --locked yazi-fm yazi-cli`
 - bat
-  - `bat cache --build`
+  - run to load themes: `bat cache --build`
 
 ## dependencies
 
