@@ -55,6 +55,18 @@ vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.g.netrw_bufsettings = "noma nomod nu rnu nobl nowrap ro"
 vim.g.netrw_banner = 0
 
+-- swapfiles
+vim.o.swapfile = false
+vim.o.backup = false
+vim.o.undofile = false
+
+-- diagnostics
+vim.diagnostic.config({
+  severity_sort = true,
+  virtual_text = false,
+  underline = false,
+})
+
 -- colorscheme
 vim.cmd("colorscheme lunaperche")
 
@@ -67,11 +79,13 @@ vim.g.maplocalleader = "\\"
 
 local map = vim.keymap.set
 
+-- ctrl+c and esc
 map("i", "<C-c>", "<Esc>", { desc = "exit insert mode" })
 map("n", "<Esc>", function()
-  vim.snippet.stop()
   vim.cmd("nohlsearch")
-end, { desc = "remove search and snippet highlights" })
+  vim.snippet.stop()
+  vim.lsp.buf.clear_references()
+end, { desc = "remove search, snippet and lsp highlights" })
 
 -- clipboard / paste buffer
 map({ "n", "x" }, "<leader>y", '"+y', { desc = "yank to system clipboard" })
@@ -79,13 +93,9 @@ map({ "n", "x" }, "<leader>d", '"_d', { desc = "delete to void register" })
 map({ "n", "x" }, "<leader>c", '"_c', { desc = "change preserving paste buffer" })
 map("x", "<leader>p", '"_dP', { desc = "paste preserving paste buffer" })
 
--- diagnostics
-map("n", "<leader>e", vim.diagnostic.open_float, { desc = "show diagnostic message" })
-map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "open diagnostic quickfix list" })
-
 -- quickfix list
-map("n", "co", ":copen<CR>", { desc = "open quickfix list" })
-map("n", "cq", ":cclose<CR>", { desc = "close quickfix list" })
+map("n", "<leader>qo", ":copen<CR>", { desc = "open quickfix list" })
+map("n", "<leader>qc", ":cclose<CR>", { desc = "close quickfix list" })
 
 -- jump tabs
 map("n", "]t", "<cmd>tabnext<CR>", { desc = "next tab" })
@@ -105,8 +115,27 @@ map("n", "<leader>rw", "<cmd>Ex<CR>", { desc = "open netrw" })
 map("n", "-", "<cmd>Ex<CR>", { desc = "open netrw" })
 
 -- source lua
-map("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "source lua file" })
 map({ "n", "x" }, "<leader>x", ":.lua<CR>", { desc = "source lua selection" })
+map("n", "<leader>X", "<cmd>source %<CR>", { desc = "source lua file" })
+
+-- diagnostics
+map("n", "<leader>e", vim.diagnostic.open_float, { desc = "show diagnostic message" })
+map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "open diagnostic quickfix list" })
+
+-- undotree
+vim.cmd("packadd nvim.undotree")
+map("n", "<leader>u", ":Undotree<CR>", { desc = "toggle undotree" })
+
+-- term
+map("n", "<leader>T", ":tab term<CR>", { desc = "open terminal in new tab" })
+map("n", "<leader>R", function()
+  vim.ui.input({ prompt = "run: " }, function(cmd)
+    if cmd and cmd ~= "" then
+      vim.cmd("vnew")
+      vim.fn.jobstart(cmd, { term = true })
+    end
+  end)
+end, { desc = "run shell command in a new split" })
 
 ----------------------------
 --------- AUTOCMDS ---------
