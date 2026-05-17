@@ -21,6 +21,6 @@ gtk-titlebar = false
 
 macos-option-as-alt = true
 
-theme = Rose Pine
+theme = Vesper
 
 config-file = ?./local.config
