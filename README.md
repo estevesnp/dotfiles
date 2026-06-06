@@ -28,8 +28,6 @@ or just run [setup.sh](./setup.sh)
 - stow
 - fzf
 - tmux
-- zoxide
-  - can install with `cargo install --locked zoxide`
 - yazi
   - can install with `cargo install --locked yazi-fm yazi-cli`
 - bat

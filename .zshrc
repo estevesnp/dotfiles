@@ -266,10 +266,6 @@ if command -v fzf &> /dev/null; then
     source <(fzf --zsh)
 fi
 
-if command -v zoxide &> /dev/null; then
-    source <(zoxide init zsh --cmd cd)
-fi
-
 
 #########
 # Plugins

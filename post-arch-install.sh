@@ -17,7 +17,6 @@ pkgs=(
     fzf
     jq
     fx
-    zoxide
     ripgrep
     fd
     yazi
