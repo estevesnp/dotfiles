@@ -23,8 +23,9 @@ if status is-interactive
     abbr -a dot   'cd ~/.dotfiles/'
     abbr -a dotnv 'cd ~/.config/nvim/'
 
-    abbr -a n    'nvim .'
-    abbr -a cvim 'nvim -u NORC'
+    abbr -a n     'nvim .'
+    abbr -a cvim  'nvim -u NORC'
+    abbr -a npack 'nvim "+lua vim.pack.update()"'
 
     abbr -a zb   'zig build'
     abbr -a zbr  'zig build run'
@@ -121,6 +122,10 @@ if status is-interactive
 
     if type -q cs
         cs --shell fish | source
+    end
+
+    if type -q fzf
+        fzf --fish | source
     end
 
 
