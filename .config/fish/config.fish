@@ -19,7 +19,7 @@ if status is-interactive
     ###############
     # abbreviations
 
-    abbr -a l     'ls -lah'
+    abbr -a l     'la'
     abbr -a dot   'cd ~/.dotfiles/'
     abbr -a dotnv 'cd ~/.config/nvim/'
 
