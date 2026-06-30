@@ -14,7 +14,6 @@ fish_add_path -g \
 
 if status is-interactive
     set fish_greeting
-    bind \cx\ce edit_command_buffer
 
     ###############
     # abbreviations
