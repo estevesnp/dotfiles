@@ -19,8 +19,10 @@ if status is-interactive
     # abbreviations
 
     abbr -a l     'la'
+    abbr -a lart  'ls -lart'
     abbr -a dot   'cd ~/.dotfiles/'
     abbr -a dotnv 'cd ~/.config/nvim/'
+    abbr -a cdl   'cd ~/.local/bin/'
 
     abbr -a n     'nvim .'
     abbr -a cvim  'nvim -u NORC'
