@@ -26,7 +26,7 @@ if status is-interactive
 
     abbr -a n     'nvim .'
     abbr -a cvim  'nvim -u NORC'
-    abbr -a npack 'nvim "+lua vim.pack.update()"'
+    abbr -a npack 'nvim "+packupdate"'
 
     abbr -a zb   'zig build'
     abbr -a zbr  'zig build run'
