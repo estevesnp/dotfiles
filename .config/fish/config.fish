@@ -76,7 +76,6 @@ if status is-interactive
     abbr -a cdr     'cd (git rev-parse --show-toplevel)'
     abbr -a co      'git checkout'
 
-
     ###########
     # functions
 
@@ -89,7 +88,7 @@ if status is-interactive
         set -l FORMAT "$HASH $RELATIVE_TIME{$AUTHOR{$REFS $SUBJECT"
         git log --graph --pretty="tformat:$FORMAT" $argv | column -t -s '{' | less -XRS --quit-if-one-screen
     end
-    abbr -a gl 'formatted_git_log'
+    abbr -a gl formatted_git_log
 
     if type -q gh
         function pr_checkout
@@ -102,7 +101,7 @@ if status is-interactive
 
             test -n "$branch"; and git checkout "$branch"
         end
-        abbr -a po 'pr_checkout'
+        abbr -a po pr_checkout
     end
 
     function tmux_attach
@@ -120,8 +119,33 @@ if status is-interactive
 
         test -n "$session"; and tmux attach -t "$session"
     end
-    abbr -a ft 'tmux_attach'
+    abbr -a ft tmux_attach
 
+    function vim_grep
+        if test (count $argv) -gt 0
+            set -f match $argv[1]
+        else
+            read -f match
+        end
+
+        if test -z "$match"
+            return 1
+        end
+
+        set -l parts (string split ":" -- $match)
+
+        set -l file $parts[1]
+        set -l line $parts[2]
+
+        if string match -qr '^[0-9]+$' -- $parts[3]
+            set -f col $parts[3]
+        else
+            set -f col 1
+        end
+
+        nvim "+call cursor($line,$col)" "$file"
+    end
+    abbr -a vg vim_grep
 
     ####################
     # shell integrations
@@ -133,7 +157,6 @@ if status is-interactive
     if type -q fzf
         fzf --fish | source
     end
-
 
     ############
     # git prompt
