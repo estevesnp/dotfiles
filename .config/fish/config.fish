@@ -22,17 +22,22 @@ if status is-interactive
     abbr -a lart  'ls -lart'
     abbr -a dot   'cd ~/.dotfiles/'
     abbr -a dotnv 'cd ~/.config/nvim/'
+    abbr -a cdc   'cd ~/.config/'
     abbr -a cdl   'cd ~/.local/bin/'
 
     abbr -a n     'nvim .'
     abbr -a cvim  'nvim -u NORC'
     abbr -a npack 'nvim "+packupdate"'
 
+    abbr -a rgc 'rg --column --no-heading'
+
     abbr -a zb   'zig build'
     abbr -a zbr  'zig build run'
     abbr -a zbt  'zig build test'
     abbr -a zbp  'zig build -p ~/.local'
     abbr -a zout 'zig-out/bin/*'
+
+    abbr -a ob 'odin build . -vet'
 
     abbr -a tn    'tmux new -s'
     abbr -a ta    'tmux attach -t'
