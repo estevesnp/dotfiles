@@ -38,6 +38,7 @@ if status is-interactive
     abbr -a zout 'zig-out/bin/*'
 
     abbr -a ob 'odin build . -vet'
+    abbr -a cb 'cargo build'
 
     abbr -a tn    'tmux new -s'
     abbr -a ta    'tmux attach -t'
