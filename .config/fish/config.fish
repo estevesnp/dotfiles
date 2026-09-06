@@ -152,7 +152,7 @@ if status is-interactive
     # shell integrations
 
     if type -q cs
-        cs --shell fish | source
+        cs shell fish | source
     end
 
     if type -q fzf
