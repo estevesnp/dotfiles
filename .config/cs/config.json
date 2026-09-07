@@ -1,0 +1,9 @@
+{
+  "markers": [
+    ".git",
+    ".jj",
+    ".csm",
+    ".cs-marker"
+  ],
+  "preview": "eza {} -a1 --color=always --icons"
+}
