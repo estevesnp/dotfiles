@@ -36,6 +36,7 @@ if status is-interactive
     abbr -a zbt  'zig build test'
     abbr -a zbp  'zig build -p ~/.local'
     abbr -a zout 'zig-out/bin/*'
+    abbr -a rmz  'rm -rf .zig-cache/ zig-out/ zig-pkg/'
 
     abbr -a ob 'odin build . -vet'
     abbr -a cb 'cargo build'
