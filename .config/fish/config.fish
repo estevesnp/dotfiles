@@ -23,10 +23,12 @@ if status is-interactive
     abbr -a dot   'cd ~/.dotfiles/'
     abbr -a dotnv 'cd ~/.config/nvim/'
     abbr -a cdc   'cd ~/.config/'
+    abbr -a cdf   'cd ~/.config/fish/'
     abbr -a cdl   'cd ~/.local/bin/'
 
     abbr -a n     'nvim .'
     abbr -a cvim  'nvim -u NORC'
+    abbr -a mvim  'NVIM_APPNAME=mvim nvim'
     abbr -a npack 'nvim "+packupdate"'
 
     abbr -a rgc 'rg --column --no-heading'
