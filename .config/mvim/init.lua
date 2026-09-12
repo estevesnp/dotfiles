@@ -18,7 +18,7 @@ vim.o.expandtab = true
 vim.o.smarttab = true
 vim.o.smartindent = true
 
--- / opts
+-- search opts
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.inccommand = "split"
@@ -46,7 +46,6 @@ vim.o.timeoutlen = 300
 vim.o.winborder = "single"
 
 -- folds
-vim.o.foldenable = false
 vim.o.foldlevel = 99
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -55,7 +54,7 @@ vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.g.netrw_bufsettings = "noma nomod nu rnu nobl nowrap ro"
 vim.g.netrw_banner = 0
 
--- swapfiles
+-- disable swap/undofile
 vim.o.swapfile = false
 vim.o.backup = false
 vim.o.undofile = false
@@ -86,6 +85,9 @@ map("n", "<Esc>", function()
   vim.snippet.stop()
   vim.lsp.buf.clear_references()
 end, { desc = "remove search, snippet and lsp highlights" })
+
+-- select last changed text
+map("n", "gV", "`[v`]", { desc = "select last changed text" })
 
 -- clipboard / paste buffer
 map({ "n", "x" }, "<leader>y", '"+y', { desc = "yank to system clipboard" })
@@ -121,10 +123,23 @@ map("n", "<leader>X", "<cmd>source %<CR>", { desc = "source lua file" })
 -- diagnostics
 map("n", "<leader>e", vim.diagnostic.open_float, { desc = "show diagnostic message" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "open diagnostic quickfix list" })
+map("n", "]e", function()
+  vim.diagnostic.jump({ severity = vim.diagnostic.severity.ERROR, count = vim.v.count1 })
+end, { desc = "jump to next error" })
+map("n", "[e", function()
+  vim.diagnostic.jump({ severity = vim.diagnostic.severity.ERROR, count = -vim.v.count1 })
+end, { desc = "jump to previous error" })
 
 -- undotree
 vim.cmd("packadd nvim.undotree")
 map("n", "<leader>u", ":Undotree<CR>", { desc = "toggle undotree" })
+
+-- set cwd
+map("n", "<leader>cd", function()
+  local buf_dir = require("config.utils").buf_dir()
+  vim.cmd.cd(buf_dir)
+  print("changed cwd to " .. buf_dir)
+end, { desc = "cd to buffer's dir" })
 
 -- term
 map("n", "<leader>T", ":tab term<CR>", { desc = "open terminal in new tab" })
@@ -145,6 +160,6 @@ end, { desc = "run shell command in a new split" })
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
   callback = function()
-    vim.hl.on_yank()
+    vim.hl.hl_op()
   end,
 })
