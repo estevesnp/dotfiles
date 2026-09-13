@@ -259,7 +259,7 @@ bindkey '^X^E' edit-command-line
 # Shell Integrations
 
 if command -v cs &> /dev/null; then
-    source <(cs --shell zsh)
+    source <(cs shell zsh)
 fi
 
 if command -v fzf &> /dev/null; then
