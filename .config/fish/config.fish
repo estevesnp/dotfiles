@@ -125,31 +125,47 @@ if status is-interactive
     end
     abbr -a ft tmux_attach
 
-    function vim_grep
+    function vim_line
+        set file
+
         if test (count $argv) -gt 0
-            set -f match $argv[1]
+            set file $argv[1]
         else
-            read -f match
+            read -f file
         end
 
-        if test -z "$match"
-            return 1
+        # file.txt:10 || file.txt:10:5
+        set match (string match -r '^([^:]+):([0-9:]+)$' -- $file)
+        if test (count $match) -eq 0
+            # file.txt(10) || file.txt(10:5)
+            set match (string match -r '^([^\\(]+)\\(([0-9:]+)\\)$' -- $file)
         end
 
-        set -l parts (string split ":" -- $match)
-
-        set -l file $parts[1]
-        set -l line $parts[2]
-
-        if string match -qr '^[0-9]+$' -- $parts[3]
-            set -f col $parts[3]
-        else
-            set -f col 1
+        if test (count $match) -eq 0
+            nvim -- "$file"
+            return
         end
 
-        nvim "+call cursor($line,$col)" "$file"
+        set filename $match[2]
+        set suffix $match[3]
+
+        if string match -r -q '^\\d+$' -- $suffix
+            nvim "+call cursor($suffix,1)" -- $filename
+            return
+        end
+
+        set match (string match -r '^(\\d+):(\\d+)$' -- $suffix)
+        if test (count $match) -eq 0
+            nvim -- "$file"
+            return
+        end
+
+        set row $match[2]
+        set col $match[3]
+
+        nvim "+call cursor($row,$col)" -- $filename
     end
-    abbr -a vg vim_grep
+    abbr -a vl vim_line
 
     ####################
     # shell integrations
