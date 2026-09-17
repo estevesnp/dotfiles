@@ -134,6 +134,10 @@ if status is-interactive
             read -f file
         end
 
+        if test -z "$file"
+            return 1
+        end
+
         # file.txt:10 || file.txt:10:5
         set match (string match -r '^([^:]+):([0-9:]+)$' -- $file)
         if test (count $match) -eq 0
