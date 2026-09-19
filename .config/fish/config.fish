@@ -37,6 +37,7 @@ if status is-interactive
     abbr -a zbr  'zig build run'
     abbr -a zbt  'zig build test'
     abbr -a zbp  'zig build -p ~/.local'
+    abbr -a zbc  'zig build --cache-poison=poisoned'
     abbr -a zout 'zig-out/bin/*'
     abbr -a rmz  'rm -rf .zig-cache/ zig-out/ zig-pkg/'
 
