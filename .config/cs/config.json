@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/estevesnp/cs/main/config.schema.json",
   "markers": [
     ".git",
     ".jj",
