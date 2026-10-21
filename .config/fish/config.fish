@@ -87,6 +87,12 @@ if status is-interactive
     ###########
     # functions
 
+    function csr
+        set -l cspath (cs search --print $argv); or return
+        test -n "$cspath"; or return
+        rex do cs dir="$cspath"
+    end
+
     function formatted_git_log
         set -l HASH "%C(always,yellow)%h%C(always,reset)"
         set -l RELATIVE_TIME "%C(always,green)%ar%C(always,reset)"
