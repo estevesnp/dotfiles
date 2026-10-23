@@ -5,9 +5,6 @@ set -gx MANPAGER 'less -R --use-color -Dd+r -Du+b'
 set -gx MASON_LSP_DIR $HOME/.local/mason
 set -gx ZIG_BUILD_ERROR_STYLE minimal # `--error-style verbose` for defaults
 
-# enable zigscient as zig lsp for neovim. set to empty string to disable
-# set -gx ZIGSCIENT_LSP 1
-
 fish_add_path -g \
     $HOME/.local/bin \
     $HOME/go/bin \
