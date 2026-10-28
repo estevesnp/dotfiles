@@ -33,7 +33,7 @@ rex.action({
       })
 
       if not created then
-        error(create_err, 0)
+        error(create_err)
       end
       session_id = created.session_id
     end
